@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './constants/theme.dart';
+import './route.dart' as route;
 
 void main() {
   runApp(const MyApp());
@@ -11,11 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MyTimeTable',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: null,
-    );
+        title: 'MyTimeTable',
+        debugShowCheckedModeBanner: false,
+        theme: themeData(),
+        onGenerateRoute: route.onGeneratedRoute,
+        initialRoute: route.landingScreen);
   }
 }
