@@ -29,7 +29,7 @@ class UpcomingUnitCard extends StatelessWidget {
         splashColor: AppColors.ligthGreen.withOpacity(0.5),
         borderRadius: BorderRadius.circular(15),
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.2,
+          height: MediaQuery.of(context).size.height * 0.25,
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -37,7 +37,7 @@ class UpcomingUnitCard extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: AppColors.darkBlue.withOpacity(0.4),
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
                 blurRadius: 6,
               ),
             ],
@@ -55,7 +55,7 @@ class UpcomingUnitCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.calendar_today,
                         color: AppColors.green,
                         size: 16,
@@ -68,7 +68,7 @@ class UpcomingUnitCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.location_on,
                         color: AppColors.green,
                         size: 16,
@@ -81,7 +81,7 @@ class UpcomingUnitCard extends StatelessWidget {
                   ),
                 ],
               ),
-              TitleText(
+              const TitleText(
                 text: "Countdown: 13hrs",
                 color: AppColors.green,
                 fontSize: 20,
