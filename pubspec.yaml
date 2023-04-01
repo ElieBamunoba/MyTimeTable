@@ -40,6 +40,8 @@ dependencies:
   equatable: ^2.0.5
   fluttertoast: ^8.2.1
   http: ^0.13.5
+  modal_bottom_sheet: ^2.1.2
+  shared_preferences: ^2.1.0
 
 dev_dependencies:
   flutter_test:

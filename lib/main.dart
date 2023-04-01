@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import './constants/theme.dart';
-import './repository/unit_repository.dart';
+import 'bloc/saved_units/saved_units_bloc.dart';
+import 'repository/saved_units/saved_units_repository.dart';
+import 'repository/unit/unit_repository.dart';
 import './route.dart' as route;
 import 'bloc/unit/unit_bloc.dart';
 
@@ -16,13 +18,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
         providers: [
-          RepositoryProvider<UnitRepository>(create: (_) => UnitRepository())
+          RepositoryProvider<UnitRepository>(create: (_) => UnitRepository()),
+          RepositoryProvider<SavedUnitsRepository>(
+              create: (_) => SavedUnitsRepository())
         ],
         child: MultiBlocProvider(
           providers: [
             BlocProvider<UnitBloc>(
                 create: (context) =>
                     UnitBloc(unitRepository: UnitRepository())),
+            BlocProvider<SavedUnitsBloc>(
+                create: (context) => SavedUnitsBloc(
+                    savedUnitsRepository: SavedUnitsRepository())),
           ],
           child: MaterialApp(
               title: 'MyTimeTable',

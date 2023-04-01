@@ -43,12 +43,16 @@ class SearchBox extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: IconButton(
-              onPressed: () => unitsController.value.text.toString().isNotEmpty
-                  ? context.read<UnitBloc>().add(LoadUnits(
-                      courses:
-                          unitsController.value.text.toString().toUpperCase()))
-                  : Fluttertoast.showToast(
-                      msg: "Kindly add an unit in the search box"),
+              onPressed: () {
+                unitsController.value.text.toString().isNotEmpty
+                    ? context.read<UnitBloc>().add(LoadUnits(
+                        courses: unitsController.value.text
+                            .toString()
+                            .toUpperCase()))
+                    : Fluttertoast.showToast(
+                        msg: "Kindly add an unit in the search box");
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
               icon: const Icon(
                 Icons.search,
                 color: Colors.white,
