@@ -10,9 +10,8 @@ class AppColors {
   static const Color cyan = Color(0xff13A5C1);
   static const Color ligthCyan = Color(0xffe7f6f9);
   static const Color ligthCyan2 = Color(0xffbce6ee);
-  static const Color backgroundLigthGrey = Color(0xffF4F4F4);
+  static const Color backgroundLigthGrey = Color(0xffFbFbFb);
   static const Color textLigthGrey = Color(0xff979797);
   static const Color textColor = Colors.black;
   static const Color textDarkGrey = Color(0xff6E6E6E);
-
 }

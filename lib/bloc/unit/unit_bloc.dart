@@ -11,7 +11,7 @@ class UnitBloc extends Bloc<UnitEvent, UnitState> {
   final UnitRepository _unitRepository;
   UnitBloc({required UnitRepository unitRepository})
       : _unitRepository = unitRepository,
-        super(UnitLoading()) {
+        super(UnitInitial()) {
     on<LoadUnits>(_onLoadUnits);
   }
   void _onLoadUnits(LoadUnits event, Emitter emit) async {

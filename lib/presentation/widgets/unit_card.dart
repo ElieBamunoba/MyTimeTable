@@ -26,19 +26,50 @@ class UnitCard extends StatelessWidget {
         height: MediaQuery.of(context).size.height * .1,
         padding: const EdgeInsets.all(10),
         child:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(unitCode),
-              Text('Venue: $examVenue'),
+              Text(
+                unitCode,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  const Text(
+                    'Date: ',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(examDay),
+                ],
+              ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Date: $examDay'),
-              Text('Time: $examTime'),
+              Row(
+                children: [
+                  const Text(
+                    'Venue: ',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(examVenue),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  const Text(
+                    'Time: ',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(examTime),
+                ],
+              ),
             ],
           ),
         ]),

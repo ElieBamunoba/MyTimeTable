@@ -8,6 +8,8 @@ abstract class UnitState extends Equatable {
 
 class UnitLoading extends UnitState {}
 
+class UnitInitial extends UnitState {}
+
 class UnitLoaded extends UnitState {
   final List<UnitModel> unitsList;
 
