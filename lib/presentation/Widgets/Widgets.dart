@@ -8,42 +8,38 @@ import 'package:intl/intl.dart';
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Container(
-        height: MediaQuery.of(context).size.height - 210,
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          dragStartBehavior: DragStartBehavior.down,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(height: 30,),
-              customSearch(),
-              SizedBox(height: 20,),
-              Container(
-                  padding: AppConstants.padding,
-                  child: const HeaderText(text: "Upcoming exam",),
-                  ),
-
-
-
-            ],
-          ),
+        body: Container(
+      height: MediaQuery.of(context).size.height - 210,
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        dragStartBehavior: DragStartBehavior.down,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 30,
+            ),
+            customSearch(),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              padding: AppConstants.padding,
+              child: const HeaderText(
+                text: "Upcoming exam",
+              ),
+            ),
+          ],
         ),
-      )
-    );
-
-
+      ),
+    ));
   }
-
-
-
-
 }
+
 // class to customize text widget
 class TitleText extends StatelessWidget {
   final String text;
@@ -66,6 +62,7 @@ class TitleText extends StatelessWidget {
             fontSize: fontSize, fontWeight: fontWeight, color: color));
   }
 }
+
 class HeaderText extends StatelessWidget {
   final String text;
   final double fontSize;
@@ -74,10 +71,10 @@ class HeaderText extends StatelessWidget {
 
   const HeaderText(
       {Key? key,
-        required this.text,
-        this.fontSize = 20,
-        this.color = Colors.black,
-        this.fontWeight = FontWeight.w900})
+      required this.text,
+      this.fontSize = 20,
+      this.color = Colors.black,
+      this.fontWeight = FontWeight.w900})
       : super(key: key);
 
   @override
@@ -87,6 +84,7 @@ class HeaderText extends StatelessWidget {
             fontSize: fontSize, fontWeight: fontWeight, color: color));
   }
 }
+
 class Icon_ extends StatelessWidget {
   final IconData icon;
   final Color color;
@@ -125,6 +123,7 @@ class Icon_ extends StatelessWidget {
     );
   }
 }
+
 Widget customSearch() {
   return Container(
     margin: AppConstants.padding,
@@ -143,24 +142,23 @@ Widget customSearch() {
                   hintText: "Search Units",
                   hintStyle: TextStyle(fontSize: 14),
                   contentPadding:
-                  EdgeInsets.only(left: 10, right: 10, bottom: 0, top: 10),
+                      EdgeInsets.only(left: 10, right: 10, bottom: 0, top: 10),
                   prefixIcon: Icon(Icons.search, color: Colors.black54)),
             ),
           ),
         ),
         const SizedBox(width: 20),
-
       ],
     ),
   );
 }
-Widget appTitle(){
+
+Widget appTitle() {
   return Container(
     padding: AppConstants.padding,
     alignment: Alignment.center,
     decoration: BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(18)),
-
       border: Border.all(
         color: AppColors.darkBlue,
         width: 1,
@@ -187,20 +185,22 @@ Widget appTitle(){
     ),
   );
 }
-Widget appBar(){
+
+Widget appBar() {
   return Container(
-    padding:AppConstants.padding,
+    padding: AppConstants.padding,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         appTitle(),
-        Container(height: 40,width: 40,
+        Container(
+          height: 40,
+          width: 40,
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             border: Border.all(
               color: AppColors.darkBlue,
               style: BorderStyle.none,
-
             ),
             borderRadius: BorderRadius.all(Radius.circular(13)),
             boxShadow: <BoxShadow>[
@@ -215,14 +215,14 @@ Widget appBar(){
             Icons.notifications,
             color: Colors.black,
             size: 30,
-          ),).ripple(() {},borderRadius: BorderRadius.all(Radius.circular((13))))
-
+          ),
+        ).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular((13))))
       ],
     ),
-
   );
 }
-Widget titleBar(){
+
+Widget titleBar() {
   DateTime date = new DateTime.now();
   return Container(
     margin: EdgeInsets.all(12),
@@ -232,17 +232,22 @@ Widget titleBar(){
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            TitleText(text: '${DateFormat.yMMMMEEEEd().format(date)}',fontSize: 12,fontWeight: FontWeight.w200,),
-            TitleText(text: 'Welcome Student!',fontSize: 19,fontWeight: FontWeight.w700,)
+            TitleText(
+              text: '${DateFormat.yMMMMEEEEd().format(date)}',
+              fontSize: 12,
+              fontWeight: FontWeight.w200,
+            ),
+            TitleText(
+              text: 'Welcome Student!',
+              fontSize: 19,
+              fontWeight: FontWeight.w700,
+            )
           ],
         ),
       ],
     ),
   );
-
-
 }
-
 
 extension OnPressed on Widget {
   Widget ripple(Function onPressed,
