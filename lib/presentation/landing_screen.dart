@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/unit/unit_bloc.dart';
 import '../constants/colors.dart';
 import './widgets/search_box.dart';
-import './widgets/title_text.dart';
 import 'Widgets/up_coming_unit_card.dart';
 import 'widgets/custom_loading.dart';
 import 'widgets/unit_card.dart';
@@ -39,10 +38,9 @@ class LandingScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TitleText(
-                      text: 'Welcome Freind !',
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700),
+                  const Text('Welcome Freind !',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                   const SizedBox(height: 10),
                   SearchBox(),
                   const SizedBox(height: 10),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '/constants/colors.dart';
-import './title_text.dart';
 
 class UpcomingUnitCard extends StatelessWidget {
   const UpcomingUnitCard(
@@ -18,7 +17,7 @@ class UpcomingUnitCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 10,
+      elevation: 5,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
         side: const BorderSide(color: AppColors.ligthGreen),
@@ -46,10 +45,8 @@ class UpcomingUnitCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TitleText(text: unitCode, fontSize: 26),
-              TitleText(
-                text: examTime,
-              ),
+              Text(unitCode),
+              Text(examTime),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -61,9 +58,7 @@ class UpcomingUnitCard extends StatelessWidget {
                         size: 16,
                       ),
                       const SizedBox(width: 10),
-                      TitleText(
-                        text: examDay,
-                      ),
+                      Text(examDay),
                     ],
                   ),
                   Row(
@@ -74,24 +69,16 @@ class UpcomingUnitCard extends StatelessWidget {
                         size: 16,
                       ),
                       const SizedBox(width: 5),
-                      TitleText(
-                        text: examVenue,
-                      ),
+                      Text(examVenue),
                     ],
                   ),
                 ],
               ),
-              const TitleText(
-                text: "Countdown: 13hrs",
-                color: AppColors.green,
-                fontSize: 20,
-              )
+              const Text("Countdown: 13hrs"),
             ],
           ),
         ),
       ),
     );
-    ;
-    ;
   }
 }

@@ -15,12 +15,13 @@ ThemeData themeData() {
         bodyMedium: TextStyle(color: AppColors.textLigthGrey),
         headlineSmall: TextStyle(color: Colors.white)),
   );
-
 }
 
-class AppConstants{
-  static EdgeInsets padding =  const EdgeInsets.symmetric(horizontal: 20, vertical: 7);
+class AppConstants {
+  static EdgeInsets padding =
+      const EdgeInsets.symmetric(horizontal: 20, vertical: 7);
 }
+
 // ignore: prefer_const_constructors
 MaterialColor myColor = MaterialColor(
   0xFF004A8B,
