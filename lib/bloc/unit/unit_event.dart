@@ -10,7 +10,7 @@ class LoadUnits extends UnitEvent {
   final String courses;
   final String campus;
 
-  const LoadUnits(this.courses, this.campus);
+  const LoadUnits({required this.courses, this.campus = '0'});
   @override
   List<Object> get props => [courses, campus];
 }
