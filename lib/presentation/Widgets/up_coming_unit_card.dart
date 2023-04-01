@@ -1,7 +1,7 @@
-import 'package:exam_time_table/presentation/Widgets/Widgets.dart';
 import 'package:flutter/material.dart';
 
 import '/constants/colors.dart';
+import './title_text.dart';
 
 class UpcomingUnitCard extends StatelessWidget {
   const UpcomingUnitCard(
@@ -46,11 +46,10 @@ class UpcomingUnitCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-
-              TitleText(text: unitCode,fontSize: 26),
-
-              TitleText(text: examTime,),
-
+              TitleText(text: unitCode, fontSize: 26),
+              TitleText(
+                text: examTime,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -62,8 +61,9 @@ class UpcomingUnitCard extends StatelessWidget {
                         size: 16,
                       ),
                       const SizedBox(width: 10),
-          TitleText(text: examDay,),
-
+                      TitleText(
+                        text: examDay,
+                      ),
                     ],
                   ),
                   Row(
@@ -74,23 +74,24 @@ class UpcomingUnitCard extends StatelessWidget {
                         size: 16,
                       ),
                       const SizedBox(width: 5),
-                      TitleText(text: examVenue,),
-
-
+                      TitleText(
+                        text: examVenue,
+                      ),
                     ],
                   ),
                 ],
               ),
-              TitleText(text: "Countdown: 13hrs",color: AppColors.green,fontSize: 20,)
-
+              TitleText(
+                text: "Countdown: 13hrs",
+                color: AppColors.green,
+                fontSize: 20,
+              )
             ],
-
           ),
         ),
       ),
     );
     ;
     ;
-
   }
 }
