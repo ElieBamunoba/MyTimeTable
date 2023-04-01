@@ -1,12 +1,13 @@
 import 'package:exam_time_table/presentation/Widgets/Widgets.dart';
-import 'package:exam_time_table/presentation/widgets/custom_app.dart';
-import 'package:exam_time_table/presentation/widgets/search_box.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/unit/unit_bloc.dart';
+import 'Widgets/custom_app.dart';
+import 'Widgets/search_box.dart';
+import 'Widgets/up_coming_unit_card.dart';
 import 'widgets/unit_card.dart';
-import 'widgets/up_coming_unit_card.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -16,7 +17,7 @@ class LandingScreen extends StatelessWidget {
     return Scaffold(
         body: SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -33,6 +34,8 @@ class LandingScreen extends StatelessWidget {
                   return Expanded(
                     child: Column(
                       children: [
+
+                        const TitleText(text: "Your upcoming exam",fontSize: 20,),
                         UpcomingUnitCard(
                           unitCode: state.unitsList[0].courseCode.toString(),
                           examDay: state.unitsList[0].date.toString(),
@@ -56,7 +59,7 @@ class LandingScreen extends StatelessWidget {
                     ),
                   );
                 } else {
-                  return const Center(child: Text('something went wrong'));
+                  return const Center(child: Text('Something went wrong'));
                 }
               },
             ),
