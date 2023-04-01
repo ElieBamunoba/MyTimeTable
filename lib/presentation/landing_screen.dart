@@ -1,4 +1,6 @@
 import 'package:exam_time_table/constants/colors.dart';
+import 'package:exam_time_table/presentation/Widgets/Widgets.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,8 +8,9 @@ import 'package:exam_time_table/presentation/Widgets/Widgets.dart';
 import 'package:exam_time_table/presentation/widgets/search_box.dart';
 
 import '../bloc/unit/unit_bloc.dart';
+import 'Widgets/search_box.dart';
+import 'Widgets/up_coming_unit_card.dart';
 import 'widgets/unit_card.dart';
-import 'widgets/up_coming_unit_card.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
