@@ -70,23 +70,29 @@ class LandingScreen extends StatelessWidget {
                         if (state.savedUnitsList.isNotEmpty)
                           SizedBox(
                             height: MediaQuery.of(context).size.height -
-                                MediaQuery.of(context).size.height * 0.55,
+                                MediaQuery.of(context).size.height * 0.6,
                             child: RefreshIndicator(
                               onRefresh: () async {
                                 context
                                     .read<SavedUnitsBloc>()
                                     .add(LoadSavedUnits());
                               },
-                              child: ListView.builder(
-                                  itemCount: state.savedUnitsList.length,
-                                  itemBuilder: (context, index) {
+                              child: ListView(
+                                children: List.generate(
+                                  state.savedUnitsList.length,
+                                  (index) {
                                     return index == 0
                                         ? const SizedBox()
                                         : UnitCard(
+                                            key: ValueKey(state
+                                                .savedUnitsList[index]
+                                                .courseCode),
                                             unit: state.savedUnitsList[index],
                                             isSaved: true,
                                           );
-                                  }),
+                                  },
+                                ),
+                              ),
                             ),
                           ),
                       ],

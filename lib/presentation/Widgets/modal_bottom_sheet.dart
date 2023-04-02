@@ -20,7 +20,7 @@ class ModalBottomSheet extends StatelessWidget {
           SearchBox(),
           const SizedBox(height: 20),
           SizedBox(
-            height: MediaQuery.of(context).size.height * .42,
+            height: MediaQuery.of(context).size.height * .40,
             child: Center(
               child: BlocBuilder<UnitBloc, UnitState>(
                 builder: (context, state) {

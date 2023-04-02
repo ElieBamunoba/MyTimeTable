@@ -5,22 +5,26 @@ import 'package:intl/intl.dart';
 import '../../constants/colors.dart';
 import '../../models/unit_model.dart';
 
-class CountDownCard extends StatefulWidget {
-  const CountDownCard({super.key, required this.unit});
+class CountDownCard extends StatelessWidget {
+  CountDownCard({super.key, required this.unit}) {
+    startTimer();
+  }
   final UnitModel unit;
 
-  @override
-  State<CountDownCard> createState() => _CountDownCardState();
-}
-
-class _CountDownCardState extends State<CountDownCard> {
   int days = 0;
+
   int hours = 0;
+
   int minutes = 0;
 
+  int seconds = 0;
+
+  // Declare the subscription variable
+  StreamSubscription? subscription;
+
   void startTimer() {
-    final date = widget.unit.date;
-    final time = widget.unit.time;
+    final date = unit.date;
+    final time = unit.time;
     DateTime startTime = DateFormat('dd/MM/yy hh:mma')
         .parse('${date!.split(" ")[1]} ${time!.split('-')[0]}');
     // Calculate the difference between the start time and the current time
@@ -33,12 +37,8 @@ class _CountDownCardState extends State<CountDownCard> {
     // Create a stream that emits a value every second
     Stream<int> stream =
         Stream.periodic(const Duration(seconds: 1), (int count) {
-      setState(() {});
       return count;
     });
-
-    // Declare the subscription variable
-    StreamSubscription? subscription;
 
     // Listen to the stream and execute some code every time a value is emitted
     subscription = stream.listen((int count) {
@@ -51,6 +51,7 @@ class _CountDownCardState extends State<CountDownCard> {
         days = remaining.inDays;
         hours = remaining.inHours % 24;
         minutes = remaining.inMinutes % 60;
+        seconds = remaining.inSeconds % 60;
       }
     });
   }
@@ -61,65 +62,62 @@ class _CountDownCardState extends State<CountDownCard> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Card(
-        margin: const EdgeInsets.symmetric(vertical: 15),
-        clipBehavior: Clip.antiAlias,
-        elevation: 0,
-        color: AppColors.ligthBlue2,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: const BorderSide(color: AppColors.darkBlue)),
-        child: Container(
-          height: size.height * .2,
-          width: double.infinity,
-          color: AppColors.darkBlue,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                'Are you ready for exam ?',
-                style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    //day
-                    CountCard(
-                      a: format(days)[0].toString(),
-                      b: format(days)[1].toString(),
-                      lable: 'Days',
-                    ),
-                    //hours
-                    CountCard(
-                      a: format(hours)[0].toString(),
-                      b: format(hours)[1].toString(),
-                      lable: 'Hours',
-                    ),
-                    //minutes
-                    CountCard(
-                      a: format(minutes)[0].toString(),
-                      b: format(hours)[1].toString(),
-                      lable: 'Minutes',
-                    )
-                  ],
+    return Builder(builder: (context) {
+      return Card(
+          margin: const EdgeInsets.symmetric(vertical: 15),
+          clipBehavior: Clip.antiAlias,
+          elevation: 0,
+          color: AppColors.ligthBlue2,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+              side: const BorderSide(color: AppColors.darkBlue)),
+          child: Container(
+            height: size.height * .2,
+            width: double.infinity,
+            color: AppColors.darkBlue,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  'Are you ready for exam ?',
+                  style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
                 ),
-              ),
-              const SizedBox()
-            ],
-          ),
-        ));
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      //day
+                      CountCard(
+                        a: format(days)[0].toString(),
+                        b: format(days)[1].toString(),
+                        lable: 'Days',
+                      ),
+                      //hours
+                      CountCard(
+                        a: format(hours)[0].toString(),
+                        b: format(hours)[1].toString(),
+                        lable: 'Hours',
+                      ),
+                      //minutes
+                      CountCard(
+                        a: format(minutes)[0].toString(),
+                        b: format(minutes)[1].toString(),
+                        lable: 'Minutes',
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox()
+              ],
+            ),
+          ));
+    });
   }
 }
 
