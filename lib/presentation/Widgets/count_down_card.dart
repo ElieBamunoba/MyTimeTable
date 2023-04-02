@@ -46,20 +46,12 @@ class CountDownCard extends StatelessWidget {
         // If the remaining time is negative, cancel the subscription
         subscription!.cancel();
       } else {
-        setState(() {});
         days = remaining.inDays;
         hours = remaining.inHours % 24;
         minutes = remaining.inMinutes % 60;
         seconds = remaining.inSeconds % 60;
-        seconds = remaining.inSeconds % 60;
       }
     });
-  }
-
-  @override
-  void dispose() {
-    subscription?.cancel();
-    super.dispose();
   }
 
   String format(int data) {
