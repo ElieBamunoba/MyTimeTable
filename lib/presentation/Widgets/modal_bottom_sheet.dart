@@ -1,3 +1,4 @@
+import 'package:exam_time_table/constants/colors.dart';
 import 'package:exam_time_table/presentation/widgets/search_box.dart';
 import 'package:exam_time_table/presentation/widgets/unit_card.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,8 @@ class ModalBottomSheet extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .headlineSmall!
-                              .copyWith(color: Colors.black, fontSize: 15),
+                              .copyWith(
+                                  color: AppColors.textColor, fontSize: 15),
                         ),
                       ),
                     );

@@ -19,6 +19,7 @@ class LandingScreen extends StatelessWidget {
         backgroundColor: AppColors.backgroundLigthGrey,
         appBar: AppBar(
           elevation: 0,
+          centerTitle: true,
           backgroundColor: AppColors.backgroundLigthGrey,
           title: const Text(
             'My TimeTable',
@@ -52,7 +53,6 @@ class LandingScreen extends StatelessWidget {
                   SearchUnitButton(),
                 ],
               ),
-              const SizedBox(height: 20),
               BlocBuilder<SavedUnitsBloc, SavedUnitsState>(
                 builder: (context, state) {
                   if (state is SavedUnitsLoading) {

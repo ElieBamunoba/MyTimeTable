@@ -17,6 +17,9 @@ class _CountDownCardState extends State<CountDownCard> {
   int days = 0;
   int hours = 0;
   int minutes = 0;
+  int seconds = 0;
+  // Declare the subscription variable
+  StreamSubscription? subscription;
 
   void startTimer() {
     final date = widget.unit.date;
@@ -37,9 +40,6 @@ class _CountDownCardState extends State<CountDownCard> {
       return count;
     });
 
-    // Declare the subscription variable
-    StreamSubscription? subscription;
-
     // Listen to the stream and execute some code every time a value is emitted
     subscription = stream.listen((int count) {
       Duration remaining = difference - Duration(seconds: count);
@@ -48,11 +48,19 @@ class _CountDownCardState extends State<CountDownCard> {
         // If the remaining time is negative, cancel the subscription
         subscription!.cancel();
       } else {
+        setState(() {});
         days = remaining.inDays;
         hours = remaining.inHours % 24;
         minutes = remaining.inMinutes % 60;
+        seconds = remaining.inSeconds % 60;
       }
     });
+  }
+
+  @override
+  void dispose() {
+    subscription?.cancel();
+    super.dispose();
   }
 
   String format(int data) {
@@ -62,6 +70,7 @@ class _CountDownCardState extends State<CountDownCard> {
 
   @override
   void didChangeDependencies() {
+    startTimer();
     super.didChangeDependencies();
   }
 
@@ -110,7 +119,7 @@ class _CountDownCardState extends State<CountDownCard> {
                     //minutes
                     CountCard(
                       a: format(minutes)[0].toString(),
-                      b: format(hours)[1].toString(),
+                      b: format(minutes)[1].toString(),
                       lable: 'Minutes',
                     )
                   ],

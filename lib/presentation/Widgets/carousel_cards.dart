@@ -18,6 +18,7 @@ class UnitCardCArouselSlider extends StatelessWidget {
         pauseAutoPlayInFiniteScroll: true,
         pauseAutoPlayOnManualNavigate: true,
         enlargeCenterPage: true,
+        autoPlayInterval: const Duration(seconds: 10),
         autoPlay: true,
       ),
       items: [
