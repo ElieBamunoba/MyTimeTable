@@ -2,7 +2,6 @@ import 'package:exam_time_table/bloc/saved_units/saved_units_bloc.dart';
 import 'package:exam_time_table/models/unit_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 import '/constants/colors.dart';
@@ -114,7 +113,6 @@ class UnitCard extends StatelessWidget {
             onPressed: () {
               context.read<SavedUnitsBloc>().add(SaveUnit(unit: unit));
               context.read<SavedUnitsBloc>().add(LoadSavedUnits());
-              Fluttertoast.showToast(msg: '${unit.courseCode} has been saved');
             },
             icon: const Icon(
               Icons.save_alt_outlined,
@@ -139,7 +137,6 @@ class SavedUnitCard extends StatelessWidget {
     // Convert string to DateTime object
     final date = (unit.date.toString().trim()).split(' ');
     String datePart = date[1]; // "17/04/23"
-
     return Card(
       elevation: 0,
       color: AppColors.ligthBlue,
@@ -234,8 +231,6 @@ class SavedUnitCard extends StatelessWidget {
             onPressed: () {
               context.read<SavedUnitsBloc>().add(DeleteUnit(unit: unit));
               context.read<SavedUnitsBloc>().add(LoadSavedUnits());
-              Fluttertoast.showToast(
-                  msg: '${unit.courseCode} has been deleted');
             },
             icon: const Icon(
               Icons.delete_forever,

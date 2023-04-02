@@ -1,5 +1,6 @@
 import 'package:exam_time_table/bloc/saved_units/saved_units_bloc.dart';
 import 'package:exam_time_table/presentation/widgets/unit_card.dart';
+import 'package:exam_time_table/presentation/widgets/up_coming_unit_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -82,11 +83,16 @@ class LandingScreen extends StatelessWidget {
                         child: ListView.builder(
                             itemCount: state.savedUnitsList.length,
                             itemBuilder: (context, index) {
-                              return SavedUnitCard(
-                                  unit: state.savedUnitsList[index]);
+                              return index == 0
+                                  ? UpcomingUnitCard(
+                                      unit: state.savedUnitsList[0])
+                                  : SavedUnitCard(
+                                      unit: state.savedUnitsList[index]);
                             }),
                       ),
                     );
+                  } else if (state is SavedUnitsLoadingError) {
+                    return Center(child: Text(state.errorMessage));
                   } else {
                     return const Center(child: Text('Something Wrong happen'));
                   }

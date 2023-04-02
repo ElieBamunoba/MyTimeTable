@@ -17,26 +17,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<UnitRepository>(create: (_) => UnitRepository()),
+        RepositoryProvider<SavedUnitsRepository>(
+            create: (_) => SavedUnitsRepository())
+      ],
+      child: MultiBlocProvider(
         providers: [
-          RepositoryProvider<UnitRepository>(create: (_) => UnitRepository()),
-          RepositoryProvider<SavedUnitsRepository>(
-              create: (_) => SavedUnitsRepository())
+          BlocProvider<UnitBloc>(
+              create: (context) => UnitBloc(unitRepository: UnitRepository())),
+          BlocProvider<SavedUnitsBloc>(
+              create: (context) =>
+                  SavedUnitsBloc(savedUnitsRepository: SavedUnitsRepository())),
         ],
-        child: MultiBlocProvider(
-          providers: [
-            BlocProvider<UnitBloc>(
-                create: (context) =>
-                    UnitBloc(unitRepository: UnitRepository())),
-            BlocProvider<SavedUnitsBloc>(
-                create: (context) => SavedUnitsBloc(
-                    savedUnitsRepository: SavedUnitsRepository())),
-          ],
-          child: MaterialApp(
-              title: 'MyTimeTable',
-              debugShowCheckedModeBanner: false,
-              theme: themeData(),
-              onGenerateRoute: route.onGeneratedRoute,
-              initialRoute: route.landingScreen),
-        ));
+        child: MaterialApp(
+            title: 'MyTimeTable',
+            debugShowCheckedModeBanner: false,
+            theme: themeData(),
+            onGenerateRoute: route.onGeneratedRoute,
+            initialRoute: route.landingScreen),
+      ),
+    );
   }
 }

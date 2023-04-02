@@ -1,3 +1,5 @@
+// ignore_for_file: body_might_complete_normally_nullable
+
 import 'package:exam_time_table/models/unit_model.dart';
 
 abstract class BaseSavedUnitsRepository {
