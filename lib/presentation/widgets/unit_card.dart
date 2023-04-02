@@ -23,11 +23,9 @@ class UnitCard extends StatelessWidget {
 
     return Card(
       elevation: 0,
-      color: AppColors.ligthBlue,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-        side: const BorderSide(color: AppColors.ligthBlue),
-      ),
+          borderRadius: BorderRadius.circular(10),
+          side: const BorderSide(color: AppColors.ligthBlue2)),
       child: Stack(
         alignment: AlignmentDirectional.topEnd,
         children: [
@@ -46,18 +44,16 @@ class UnitCard extends StatelessWidget {
                       unit.courseCode.toString(),
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: AppColors.textColor,
+                          color: AppColors.textDarkGrey,
                           fontSize: 17),
                     ),
                     const SizedBox(height: 15),
                     Row(
                       children: [
-                        const Text(
-                          'Date: ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.textDarkGrey),
-                        ),
+                        const Text('Date: ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.textDarkGrey)),
                         Text(
                           DateFormat('EEE dd/MM/yy')
                               .format(DateFormat('dd/MM/yy').parse(datePart)),
@@ -119,17 +115,27 @@ class UnitCard extends StatelessWidget {
                   },
                   icon: const Icon(
                     Icons.delete_forever,
-                    color: Colors.red,
+                    color: AppColors.red,
                   ),
                 )
-              : IconButton(
-                  onPressed: () {
+              : InkWell(
+                  onTap: () {
                     context.read<SavedUnitsBloc>().add(SaveUnit(unit: unit));
                     context.read<SavedUnitsBloc>().add(LoadSavedUnits());
                   },
-                  icon: const Icon(
-                    Icons.save_alt_outlined,
-                    color: AppColors.green,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 5, top: 5),
+                    height: 30,
+                    width: 30,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: AppColors.green,
+                    ),
+                    child: const Icon(
+                      Icons.arrow_upward_rounded,
+                      color: Colors.white,
+                    ),
                   ),
                 )
         ],

@@ -23,7 +23,7 @@ class UpcomingUnitCard extends StatelessWidget {
       ),
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: Stack(
-        alignment: AlignmentDirectional.bottomEnd,
+        alignment: AlignmentDirectional.topEnd,
         children: [
           Container(
             height: MediaQuery.of(context).size.height * 0.25,
@@ -38,10 +38,10 @@ class UpcomingUnitCard extends StatelessWidget {
                 ),
               ],
             ),
-            child: Column(
+            child: ListView(
               children: [
                 Container(
-                  height: 40,
+                  height: 30,
                   alignment: Alignment.center,
                   width: double.infinity,
                   decoration:
@@ -50,7 +50,7 @@ class UpcomingUnitCard extends StatelessWidget {
                     'Upcoming Exam',
                     style: Theme.of(context).textTheme.labelLarge!.copyWith(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 17,
                           wordSpacing: 5,
                           letterSpacing: 2,
                         ),
@@ -65,11 +65,13 @@ class UpcomingUnitCard extends StatelessWidget {
                       Text(
                         unit.courseCode.toString(),
                         textAlign: TextAlign.left,
-                        style:
-                            Theme.of(context).textTheme.displaySmall!.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 1,
-                                ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 1,
+                                fontSize: 25),
                       ),
                       const SizedBox(height: 10),
                       Row(
@@ -84,15 +86,15 @@ class UpcomingUnitCard extends StatelessWidget {
                                     .headlineSmall!
                                     .copyWith(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 20,
+                                      fontSize: 17,
                                       color: AppColors.textDarkGrey,
                                       letterSpacing: 1,
                                     ),
                               ),
                               Row(
                                 children: [
-                                  const Icon(Icons.calendar_today,
-                                      color: AppColors.green, size: 28),
+                                  const Icon(Icons.calendar_month_sharp,
+                                      color: AppColors.green, size: 22),
                                   const SizedBox(width: 10),
                                   Text(unit.time.toString(),
                                       style: Theme.of(context)
@@ -100,14 +102,14 @@ class UpcomingUnitCard extends StatelessWidget {
                                           .headlineSmall!
                                           .copyWith(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 16,
+                                              fontSize: 14,
                                               color: AppColors.textDarkGrey,
                                               letterSpacing: 1))
                                 ],
                               ),
                             ],
                           ),
-                          Row(
+                          Column(
                             children: [
                               const Icon(Icons.location_on,
                                   color: AppColors.green, size: 30),
@@ -125,8 +127,6 @@ class UpcomingUnitCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10),
-                      const Text("Countdown: 13hrs"),
                     ],
                   ),
                 ),
@@ -135,17 +135,17 @@ class UpcomingUnitCard extends StatelessWidget {
           ),
           Container(
             clipBehavior: Clip.antiAlias,
-            width: 60,
-            height: 40,
+            width: 50,
+            height: 30,
             decoration: const BoxDecoration(
-                color: Colors.red,
+                color: AppColors.red,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(15),
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(15),
                 )),
             child: IconButton(
               icon: const Icon(Icons.delete_forever,
-                  color: Colors.white, size: 25),
+                  color: Colors.white, size: 18),
               onPressed: () {
                 context.read<SavedUnitsBloc>().add(DeleteUnit(unit: unit));
                 context.read<SavedUnitsBloc>().add(LoadSavedUnits());

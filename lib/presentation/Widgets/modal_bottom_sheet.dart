@@ -39,7 +39,7 @@ class ModalBottomSheet extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               const Text(
-                                'We couldn\'t find what you searcged for.\nTry searching again.\n',
+                                'We couldn\'t find what you searched for.\nTry searching again.\n',
                                 textAlign: TextAlign.center,
                               ),
                               const SizedBox(height: 10),

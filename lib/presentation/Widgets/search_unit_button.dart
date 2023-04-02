@@ -9,11 +9,15 @@ class SearchUnitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       width: double.infinity,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              fixedSize: const Size(double.infinity, 50)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              fixedSize: const Size(double.infinity, 60)),
           onPressed: () => showModalBottomSheet<void>(
               context: context,
               shape: const RoundedRectangleBorder(
