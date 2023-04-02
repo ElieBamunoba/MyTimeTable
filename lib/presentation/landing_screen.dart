@@ -70,8 +70,10 @@ class LandingScreen extends StatelessWidget {
                                   itemBuilder: (context, index) {
                                     return index == 0
                                         ? const SizedBox()
-                                        : SavedUnitCard(
-                                            unit: state.savedUnitsList[index]);
+                                        : UnitCard(
+                                            unit: state.savedUnitsList[index],
+                                            isSaved: true,
+                                          );
                                   }),
                             ),
                           ),
