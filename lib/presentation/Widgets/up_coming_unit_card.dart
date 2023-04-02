@@ -15,7 +15,8 @@ class UpcomingUnitCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
+      elevation: 1,
+      clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
         side: const BorderSide(color: AppColors.ligthGreen),
@@ -26,7 +27,6 @@ class UpcomingUnitCard extends StatelessWidget {
         children: [
           Container(
             height: MediaQuery.of(context).size.height * 0.25,
-            padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
@@ -39,39 +39,97 @@ class UpcomingUnitCard extends StatelessWidget {
               ],
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(unit.courseCode.toString()),
-                Text(unit.time.toString()),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.calendar_today,
-                          color: AppColors.green,
-                          size: 16,
+                Container(
+                  height: 40,
+                  alignment: Alignment.center,
+                  width: double.infinity,
+                  decoration:
+                      BoxDecoration(color: AppColors.green.withOpacity(.8)),
+                  child: Text(
+                    'Upcoming Exam',
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                          color: Colors.white,
+                          fontSize: 18,
+                          wordSpacing: 5,
+                          letterSpacing: 2,
                         ),
-                        const SizedBox(width: 10),
-                        Text(unit.date.toString()),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.location_on,
-                          color: AppColors.green,
-                          size: 16,
-                        ),
-                        const SizedBox(width: 5),
-                        Text(unit.venue.toString()),
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
-                const Text("Countdown: 13hrs"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        unit.courseCode.toString(),
+                        textAlign: TextAlign.left,
+                        style:
+                            Theme.of(context).textTheme.displaySmall!.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                ),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                unit.date.toString(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineSmall!
+                                    .copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                      color: AppColors.textDarkGrey,
+                                      letterSpacing: 1,
+                                    ),
+                              ),
+                              Row(
+                                children: [
+                                  const Icon(Icons.calendar_today,
+                                      color: AppColors.green, size: 28),
+                                  const SizedBox(width: 10),
+                                  Text(unit.time.toString(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineSmall!
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                              color: AppColors.textDarkGrey,
+                                              letterSpacing: 1))
+                                ],
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Icon(Icons.location_on,
+                                  color: AppColors.green, size: 30),
+                              const SizedBox(width: 5),
+                              Text(unit.venue.toString(),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                          color: AppColors.textDarkGrey,
+                                          letterSpacing: 1))
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      const Text("Countdown: 13hrs"),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
