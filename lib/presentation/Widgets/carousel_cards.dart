@@ -14,10 +14,11 @@ class UnitCardCArouselSlider extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return CarouselSlider(
       options: CarouselOptions(
-        height: size.height * .25,
+        height: size.height * .22,
         pauseAutoPlayInFiniteScroll: true,
         pauseAutoPlayOnManualNavigate: true,
         enlargeCenterPage: true,
+        autoPlayInterval: const Duration(seconds: 10),
         autoPlay: true,
       ),
       items: [
