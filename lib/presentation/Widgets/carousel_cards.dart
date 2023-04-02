@@ -1,9 +1,9 @@
 import 'package:exam_time_table/models/unit_model.dart';
-import 'package:exam_time_table/presentation/widgets/up_coming_unit_card.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'count_down_card.dart';
+import 'up-comming_unit_card.dart';
 
 class UnitCardCArouselSlider extends StatelessWidget {
   final UnitModel unit;
@@ -20,7 +20,10 @@ class UnitCardCArouselSlider extends StatelessWidget {
         enlargeCenterPage: true,
         autoPlay: true,
       ),
-      items: [UpcomingUnitCard(unit: unit), CountDownCard()],
+      items: [
+        UpcomingUnitCard(unit: unit),
+        CountDownCard(unit: unit),
+      ],
     );
   }
 }

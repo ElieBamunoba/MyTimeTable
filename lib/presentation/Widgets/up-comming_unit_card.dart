@@ -5,17 +5,22 @@ import '../../bloc/saved_units/saved_units_bloc.dart';
 import '../../models/unit_model.dart';
 import '/constants/colors.dart';
 
-class UpcomingUnitCard extends StatelessWidget {
+class UpcomingUnitCard extends StatefulWidget {
   const UpcomingUnitCard({
-    super.key,
+    Key? key,
     required this.unit,
-  });
+  }) : super(key: key);
   final UnitModel unit;
 
   @override
+  State<UpcomingUnitCard> createState() => _UpcomingUnitCardState();
+}
+
+class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
+  @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 1,
+      elevation: 5,
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
@@ -45,7 +50,7 @@ class UpcomingUnitCard extends StatelessWidget {
                   alignment: Alignment.center,
                   width: double.infinity,
                   decoration:
-                      BoxDecoration(color: AppColors.green.withOpacity(.8)),
+                      BoxDecoration(color: AppColors.orange.withOpacity(.8)),
                   child: Text(
                     'Upcoming Exam',
                     style: Theme.of(context).textTheme.labelLarge!.copyWith(
@@ -63,7 +68,7 @@ class UpcomingUnitCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        unit.courseCode.toString(),
+                        widget.unit.courseCode.toString(),
                         textAlign: TextAlign.left,
                         style: Theme.of(context)
                             .textTheme
@@ -78,25 +83,27 @@ class UpcomingUnitCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                unit.date.toString(),
+                                widget.unit.date.toString(),
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineSmall!
                                     .copyWith(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 17,
+                                      fontSize: 16,
                                       color: AppColors.textDarkGrey,
                                       letterSpacing: 1,
                                     ),
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   const Icon(Icons.calendar_month_sharp,
-                                      color: AppColors.green, size: 22),
+                                      color: AppColors.orange, size: 30),
                                   const SizedBox(width: 10),
-                                  Text(unit.time.toString(),
+                                  Text(widget.unit.time.toString(),
                                       style: Theme.of(context)
                                           .textTheme
                                           .headlineSmall!
@@ -112,9 +119,9 @@ class UpcomingUnitCard extends StatelessWidget {
                           Column(
                             children: [
                               const Icon(Icons.location_on,
-                                  color: AppColors.green, size: 30),
+                                  color: AppColors.orange, size: 30),
                               const SizedBox(width: 5),
-                              Text(unit.venue.toString(),
+                              Text(widget.unit.venue.toString(),
                                   style: Theme.of(context)
                                       .textTheme
                                       .headlineSmall!
@@ -147,7 +154,9 @@ class UpcomingUnitCard extends StatelessWidget {
               icon: const Icon(Icons.delete_forever,
                   color: Colors.white, size: 18),
               onPressed: () {
-                context.read<SavedUnitsBloc>().add(DeleteUnit(unit: unit));
+                context
+                    .read<SavedUnitsBloc>()
+                    .add(DeleteUnit(unit: widget.unit));
                 context.read<SavedUnitsBloc>().add(LoadSavedUnits());
               },
             ),

@@ -130,7 +130,7 @@ class UnitCard extends StatelessWidget {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: AppColors.green,
+                      color: AppColors.orange,
                     ),
                     child: const Icon(
                       Icons.arrow_upward_rounded,
