@@ -78,15 +78,13 @@ class _CountDownCardState extends State<CountDownCard> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Card(
-        margin: const EdgeInsets.symmetric(vertical: 15),
         clipBehavior: Clip.antiAlias,
-        elevation: 0,
         color: AppColors.ligthBlue2,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
             side: const BorderSide(color: AppColors.darkBlue)),
         child: Container(
-          height: size.height * .2,
+          height: size.height * .22,
           width: double.infinity,
           color: AppColors.darkBlue,
           child: Column(

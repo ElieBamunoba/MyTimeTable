@@ -20,18 +20,18 @@ class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
-        side: const BorderSide(color: AppColors.ligthGreen),
+        side: const BorderSide(
+          color: AppColors.ligthGreen,
+        ),
       ),
-      margin: const EdgeInsets.symmetric(vertical: 10),
       child: Stack(
         alignment: AlignmentDirectional.topEnd,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.25,
+            height: MediaQuery.of(context).size.height * 0.22,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
@@ -63,7 +63,7 @@ class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 10),
+                      horizontal: 20.0, vertical: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -101,7 +101,7 @@ class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   const Icon(Icons.calendar_month_sharp,
-                                      color: AppColors.orange, size: 30),
+                                      color: AppColors.orange, size: 35),
                                   const SizedBox(width: 10),
                                   Text(widget.unit.time.toString(),
                                       style: Theme.of(context)
@@ -118,9 +118,9 @@ class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
                           ),
                           Column(
                             children: [
-                              const Icon(Icons.location_on,
-                                  color: AppColors.orange, size: 30),
-                              const SizedBox(width: 5),
+                              const Icon(Icons.location_on_rounded,
+                                  color: AppColors.orange, size: 35),
+                              const SizedBox(width: 10),
                               Text(widget.unit.venue.toString(),
                                   style: Theme.of(context)
                                       .textTheme

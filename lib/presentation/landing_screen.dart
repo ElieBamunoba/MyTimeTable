@@ -35,23 +35,25 @@ class LandingScreen extends StatelessWidget {
                     color: AppColors.darkBlue))
           ],
         ),
-        body: Container(
+        body: SizedBox(
           height: MediaQuery.of(context).size.height - 70,
-          padding: const EdgeInsets.all(10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
-                children: const [
-                  Text('Welcome Friend! 😉',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.textColor)),
-                  SizedBox(height: 10),
-                  SearchUnitButton(),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Column(
+                  children: const [
+                    Text('Welcome Friend! 😉',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.textColor)),
+                    SizedBox(height: 10),
+                    SearchUnitButton(),
+                  ],
+                ),
               ),
               BlocBuilder<SavedUnitsBloc, SavedUnitsState>(
                 builder: (context, state) {
@@ -67,8 +69,10 @@ class LandingScreen extends StatelessWidget {
                             ? UnitCardCArouselSlider(
                                 unit: state.savedUnitsList[0])
                             : const EmptyUnitsList(),
+                        const SizedBox(height: 10),
                         if (state.savedUnitsList.isNotEmpty)
-                          SizedBox(
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             height: MediaQuery.of(context).size.height -
                                 MediaQuery.of(context).size.height * 0.55,
                             child: RefreshIndicator(
