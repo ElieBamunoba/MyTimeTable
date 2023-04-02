@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../constants/colors.dart';
-import './widgets/modal_bottom_sheet.dart';
+import 'widgets/empty_units_list.dart';
+import 'widgets/search_unit_button.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -29,42 +30,16 @@ class LandingScreen extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Text('Welcome Freind !',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
-              const SizedBox(height: 10),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(double.infinity, 50)),
-                    onPressed: () => showModalBottomSheet<void>(
-                        context: context,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(25.0),
-                          ),
-                        ),
-                        builder: (BuildContext context) =>
-                            const ModalBottomSheet()),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "Search for your units",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineSmall!
-                              .copyWith(fontSize: 18),
-                        ),
-                        const Icon(
-                          Icons.search,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ],
-                    )),
+              Column(
+                children: const [
+                  Text('Welcome Friend! 😉',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                  SizedBox(height: 10),
+                  SearchUnitButton(),
+                ],
               ),
               const SizedBox(height: 20),
               BlocBuilder<SavedUnitsBloc, SavedUnitsState>(
@@ -77,30 +52,37 @@ class LandingScreen extends StatelessWidget {
                     return Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        UpcomingUnitCard(unit: state.savedUnitsList[0]),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height -
-                              MediaQuery.of(context).size.height * 0.55,
-                          child: RefreshIndicator(
-                            onRefresh: () async {
-                              context
-                                  .read<SavedUnitsBloc>()
-                                  .add(LoadSavedUnits());
-                            },
-                            child: ListView.builder(
-                                itemCount: state.savedUnitsList.length,
-                                itemBuilder: (context, index) {
-                                  return index == 0
-                                      ? const SizedBox()
-                                      : SavedUnitCard(
-                                          unit: state.savedUnitsList[index]);
-                                }),
+                        state.savedUnitsList.isNotEmpty
+                            ? UpcomingUnitCard(unit: state.savedUnitsList[0])
+                            : const EmptyUnitsList(),
+                        if (state.savedUnitsList.isNotEmpty)
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height -
+                                MediaQuery.of(context).size.height * 0.55,
+                            child: RefreshIndicator(
+                              onRefresh: () async {
+                                context
+                                    .read<SavedUnitsBloc>()
+                                    .add(LoadSavedUnits());
+                              },
+                              child: ListView.builder(
+                                  itemCount: state.savedUnitsList.length,
+                                  itemBuilder: (context, index) {
+                                    return index == 0
+                                        ? const SizedBox()
+                                        : SavedUnitCard(
+                                            unit: state.savedUnitsList[index]);
+                                  }),
+                            ),
                           ),
-                        ),
                       ],
                     );
                   } else if (state is SavedUnitsLoadingError) {
-                    return Center(child: Text(state.errorMessage));
+                    if (state.errorMessage.contains('Data not found')) {
+                      return const EmptyUnitsList();
+                    } else {
+                      return Center(child: Text(state.errorMessage));
+                    }
                   } else {
                     return const Center(child: Text('Something Wrong happen'));
                   }

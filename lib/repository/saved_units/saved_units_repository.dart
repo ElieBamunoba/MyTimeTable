@@ -10,10 +10,11 @@ import '../../models/unit_model.dart';
 
 class SavedUnitsRepository extends BaseSavedUnitsRepository {
   @override
-  //function to add a course in the saved list
+  //!function to add a course in the saved list
   Future<void> saveUnit({required UnitModel unit}) async {
     final prefs = await SharedPreferences.getInstance();
     final unitsList = await loadSavedUnits();
+
     //check if the course has been already saved
     if (!unitsList.any((element) => element.courseCode == unit.courseCode)) {
       unitsList.add(unit);
@@ -43,10 +44,8 @@ class SavedUnitsRepository extends BaseSavedUnitsRepository {
   Future<List<UnitModel>> loadSavedUnits() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? unitsFromPrefs = prefs.getString("data");
-
     if (unitsFromPrefs != null) {
       List<dynamic> decodedData = jsonDecode(unitsFromPrefs);
-
       decodedData.sort((a, b) {
         // Parse day strings into date objects
         DateTime aDate = DateFormat('dd/MM/yy')
@@ -69,14 +68,11 @@ class SavedUnitsRepository extends BaseSavedUnitsRepository {
         // Compare times
         return aTime.compareTo(bTime);
       });
-
       List<UnitModel> unitsList =
           decodedData.map((unitJson) => UnitModel.fromJson(unitJson)).toList();
-      //! sort the unitsList based on date and time properties
-
       return unitsList;
     } else {
-      throw Exception('Data not found');
+      return <UnitModel>[];
     }
   }
 }
