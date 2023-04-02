@@ -31,8 +31,8 @@ class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
   }
 
   void startTimer() {
-    final date = widget.unit?.date ?? '0000 00/00/00';
-    final time = widget.unit?.time ?? '00:00AM-00:00AM';
+    final date = widget.unit.date ?? '0000 00/00/00';
+    final time = widget.unit.time ?? '00:00AM-00:00AM';
     DateTime startTime = DateFormat('dd/MM/yy hh:mma')
         .parse('${date.split(" ")[1]} ${time.split('-')[0]}');
     // Calculate the difference between the start time and the current time
