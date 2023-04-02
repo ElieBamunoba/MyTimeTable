@@ -34,7 +34,6 @@ class LandingScreen extends StatelessWidget {
               const Text('Welcome Freind !',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
               const SizedBox(height: 10),
-              const SizedBox(height: 10),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -75,21 +74,30 @@ class LandingScreen extends StatelessWidget {
                       child: CupertinoActivityIndicator(),
                     );
                   } else if (state is SavedUnitsLoaded) {
-                    return Expanded(
-                      child: RefreshIndicator(
-                        onRefresh: () async {
-                          context.read<SavedUnitsBloc>().add(LoadSavedUnits());
-                        },
-                        child: ListView.builder(
-                            itemCount: state.savedUnitsList.length,
-                            itemBuilder: (context, index) {
-                              return index == 0
-                                  ? UpcomingUnitCard(
-                                      unit: state.savedUnitsList[0])
-                                  : SavedUnitCard(
-                                      unit: state.savedUnitsList[index]);
-                            }),
-                      ),
+                    return Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        UpcomingUnitCard(unit: state.savedUnitsList[0]),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height -
+                              MediaQuery.of(context).size.height * 0.55,
+                          child: RefreshIndicator(
+                            onRefresh: () async {
+                              context
+                                  .read<SavedUnitsBloc>()
+                                  .add(LoadSavedUnits());
+                            },
+                            child: ListView.builder(
+                                itemCount: state.savedUnitsList.length,
+                                itemBuilder: (context, index) {
+                                  return index == 0
+                                      ? const SizedBox()
+                                      : SavedUnitCard(
+                                          unit: state.savedUnitsList[index]);
+                                }),
+                          ),
+                        ),
+                      ],
                     );
                   } else if (state is SavedUnitsLoadingError) {
                     return Center(child: Text(state.errorMessage));

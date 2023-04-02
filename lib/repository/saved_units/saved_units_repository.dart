@@ -61,8 +61,10 @@ class SavedUnitsRepository extends BaseSavedUnitsRepository {
         }
 
         // If dates are the same, parse time strings into DateTime objects
-        DateTime aTime = DateFormat('hh:mma').parse(a['time'].split('-')[0]);
-        DateTime bTime = DateFormat('hh:mma').parse(b['time'].split('-')[0]);
+        DateTime aTime = DateFormat('hh:mma')
+            .parse((a['time'].toString().replaceAll('.', ':')).split('-')[0]);
+        DateTime bTime = DateFormat('hh:mma')
+            .parse((b['time'].toString().replaceAll('.', ':')).split('-')[0]);
 
         // Compare times
         return aTime.compareTo(bTime);
