@@ -5,18 +5,13 @@ import '../../bloc/saved_units/saved_units_bloc.dart';
 import '../../models/unit_model.dart';
 import '/constants/colors.dart';
 
-class UpcomingUnitCard extends StatefulWidget {
+class UpcomingUnitCard extends StatelessWidget {
   const UpcomingUnitCard({
     Key? key,
     required this.unit,
   }) : super(key: key);
   final UnitModel unit;
 
-  @override
-  State<UpcomingUnitCard> createState() => _UpcomingUnitCardState();
-}
-
-class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -31,7 +26,7 @@ class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
         alignment: AlignmentDirectional.topEnd,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.22,
+            height: MediaQuery.of(context).size.height * 0.22 + 6,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
@@ -68,7 +63,7 @@ class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.unit.courseCode.toString(),
+                        unit.courseCode.toString(),
                         textAlign: TextAlign.left,
                         style: Theme.of(context)
                             .textTheme
@@ -86,7 +81,7 @@ class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                widget.unit.date.toString(),
+                                unit.date.toString(),
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineSmall!
@@ -103,15 +98,18 @@ class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
                                   const Icon(Icons.calendar_month_sharp,
                                       color: AppColors.orange, size: 35),
                                   const SizedBox(width: 10),
-                                  Text(widget.unit.time.toString(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headlineSmall!
-                                          .copyWith(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14,
-                                              color: AppColors.textDarkGrey,
-                                              letterSpacing: 1))
+                                  Text(
+                                    unit.time.toString(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall!
+                                        .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                          color: AppColors.textDarkGrey,
+                                          letterSpacing: 1,
+                                        ),
+                                  )
                                 ],
                               ),
                             ],
@@ -121,15 +119,18 @@ class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
                               const Icon(Icons.location_on_rounded,
                                   color: AppColors.orange, size: 35),
                               const SizedBox(width: 10),
-                              Text(widget.unit.venue.toString(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineSmall!
-                                      .copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16,
-                                          color: AppColors.textDarkGrey,
-                                          letterSpacing: 1))
+                              Text(
+                                unit.venue.toString(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineSmall!
+                                    .copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: AppColors.textDarkGrey,
+                                      letterSpacing: 1,
+                                    ),
+                              )
                             ],
                           ),
                         ],
@@ -154,9 +155,7 @@ class _UpcomingUnitCardState extends State<UpcomingUnitCard> {
               icon: const Icon(Icons.delete_forever,
                   color: Colors.white, size: 18),
               onPressed: () {
-                context
-                    .read<SavedUnitsBloc>()
-                    .add(DeleteUnit(unit: widget.unit));
+                context.read<SavedUnitsBloc>().add(DeleteUnit(unit: unit));
                 context.read<SavedUnitsBloc>().add(LoadSavedUnits());
               },
             ),
