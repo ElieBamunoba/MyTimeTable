@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:exam_time_table/constants/colors.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
@@ -24,12 +23,10 @@ class SavedUnitsRepository extends BaseSavedUnitsRepository {
       prefs.setString("data", jsonData);
       Fluttertoast.showToast(
         msg: '${unit.courseCode} has been added',
-        textColor: AppColors.textColor,
       );
     } else {
       Fluttertoast.showToast(
         msg: '${unit.courseCode} already exist',
-        textColor: AppColors.textColor,
       );
     }
   }
@@ -45,7 +42,6 @@ class SavedUnitsRepository extends BaseSavedUnitsRepository {
     prefs.setString("data", jsonData);
     Fluttertoast.showToast(
       msg: '${unit.courseCode} has been removed',
-      textColor: AppColors.textColor,
     );
   }
 

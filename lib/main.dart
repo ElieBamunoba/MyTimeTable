@@ -8,7 +8,9 @@ import 'repository/unit/unit_repository.dart';
 import './route.dart' as route;
 import 'bloc/unit/unit_bloc.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
