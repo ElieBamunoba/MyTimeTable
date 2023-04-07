@@ -75,27 +75,20 @@ class LandingScreen extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             height: MediaQuery.of(context).size.height -
                                 MediaQuery.of(context).size.height * 0.6,
-                            child: RefreshIndicator(
-                              onRefresh: () async {
-                                context
-                                    .read<SavedUnitsBloc>()
-                                    .add(LoadSavedUnits());
-                              },
-                              child: ListView(
-                                children: List.generate(
-                                  state.savedUnitsList.length,
-                                  (index) {
-                                    return index == 0
-                                        ? const SizedBox()
-                                        : UnitCard(
-                                            key: ValueKey(state
-                                                .savedUnitsList[index]
-                                                .courseCode),
-                                            unit: state.savedUnitsList[index],
-                                            isSaved: true,
-                                          );
-                                  },
-                                ),
+                            child: ListView(
+                              children: List.generate(
+                                state.savedUnitsList.length,
+                                (index) {
+                                  return index == 0
+                                      ? const SizedBox()
+                                      : UnitCard(
+                                          key: ValueKey(state
+                                              .savedUnitsList[index]
+                                              .courseCode),
+                                          unit: state.savedUnitsList[index],
+                                          isSaved: true,
+                                        );
+                                },
                               ),
                             ),
                           ),

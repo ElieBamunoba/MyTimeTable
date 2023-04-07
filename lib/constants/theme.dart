@@ -24,17 +24,17 @@ class AppConstants {
 
 // ignore: prefer_const_constructors
 MaterialColor myColor = MaterialColor(
-  0xFF004A8B,
-  const <int, Color>{
-    50: Color(0xFFE6EEF6),
-    100: Color(0xFFBFD2E9),
-    200: Color(0xFF94AED5),
-    300: Color(0xFF6888C1),
-    400: Color(0xFF4D6FAF),
-    500: Color(0xFF33569D),
-    600: Color(0xFF2F4E91),
-    700: Color(0xFF294486),
-    800: Color(0xFF243C7B),
-    900: Color(0xFF1B2D68),
+  0xff266b94,
+  <int, Color>{
+    50: Color(0xffe6f1f7),
+    100: Color(0xffbfd8e6),
+    200: Color(0xff93bfcf),
+    300: Color(0xff6596b8),
+    400: Color(0xff3e7fa8),
+    500: Color(0xff266b94),
+    600: Color(0xff205d87),
+    700: Color(0xff1a4f7b),
+    800: Color(0xff14426f),
+    900: Color(0xff0d2d59),
   },
 );

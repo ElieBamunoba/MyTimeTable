@@ -20,15 +20,13 @@ class UpcomingUnitCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
-        side: const BorderSide(
-          color: AppColors.ligthGreen,
-        ),
+        side: const BorderSide(color: AppColors.ligthBlue),
       ),
       child: Stack(
         alignment: AlignmentDirectional.topEnd,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.22 + 6,
+            height: MediaQuery.of(context).size.height * 0.23,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),

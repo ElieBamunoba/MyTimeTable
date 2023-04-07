@@ -18,13 +18,11 @@ class SearchUnitButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               fixedSize: const Size(double.infinity, 60)),
-          onPressed: () => showModalBottomSheet<void>(
+          onPressed: () => showModalBottomSheet(
               context: context,
               shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(25.0),
-                ),
-              ),
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(25.0))),
               builder: (BuildContext context) => const ModalBottomSheet()),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -40,7 +38,7 @@ class SearchUnitButton extends StatelessWidget {
                 Icons.search,
                 color: Colors.white,
                 size: 30,
-              ),
+              )
             ],
           )),
     );
