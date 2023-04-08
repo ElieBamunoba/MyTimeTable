@@ -1,11 +1,11 @@
 import 'package:exam_time_table/constants/colors.dart';
 import 'package:exam_time_table/presentation/widgets/search_box.dart';
-import 'package:exam_time_table/presentation/widgets/unit_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../bloc/unit/unit_bloc.dart';
+import 'cards/unit_card.dart';
 import 'custom_loading.dart';
 
 class ModalBottomSheet extends StatelessWidget {
