@@ -47,14 +47,14 @@ class UpcomingUnitCard extends StatelessWidget {
                     height: 30,
                     alignment: Alignment.center,
                     width: double.infinity,
-                    decoration:
-                        BoxDecoration(color: AppColors.orange.withOpacity(.8)),
+                    decoration: BoxDecoration(color: AppColors.orange2),
                     child: Text(
                       'Upcoming Exam',
                       style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                            color: Colors.white,
+                            color: AppColors.textColor2,
                             fontSize: 17,
                             wordSpacing: 5,
+                            fontWeight: FontWeight.w700,
                             letterSpacing: 2,
                           ),
                     ),

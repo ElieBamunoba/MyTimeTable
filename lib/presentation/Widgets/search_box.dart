@@ -25,6 +25,7 @@ class SearchBox extends StatelessWidget {
                 .add(LoadUnits(courses: value.toUpperCase())),
             decoration: InputDecoration(
               hintText: "Search for your units (acs113, bil111A, ...)",
+              hintStyle: TextStyle(fontSize: 15),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(color: AppColors.darkBlue)),

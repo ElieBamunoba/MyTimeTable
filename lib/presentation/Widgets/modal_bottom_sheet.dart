@@ -58,14 +58,23 @@ class ModalBottomSheet extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 30),
                       child: Center(
-                        child: Text(
-                          'Enter your unit code to get a simplified timetable of your exams',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineSmall!
-                              .copyWith(
-                                  color: AppColors.textColor, fontSize: 15),
+                        child: Container(
+                          height: 90,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: AppColors.orange2,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            'Please enter your course codes separated by commas to receive a simplified timetable of your exams.',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .copyWith(
+                                    color: AppColors.textColor2, fontSize: 15),
+                          ),
                         ),
                       ),
                     );
