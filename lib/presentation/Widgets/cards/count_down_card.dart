@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 import '../../../constants/colors.dart';
+import './small_counting_card.dart';
 
 class CountDownCard extends StatelessWidget {
   CountDownCard(
@@ -49,19 +50,19 @@ class CountDownCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     //day
-                    CountCard(
+                    SmallCountingCard(
                       a: format(days)[0].toString(),
                       b: format(days)[1].toString(),
                       lable: 'Days',
                     ),
                     //hours
-                    CountCard(
+                    SmallCountingCard(
                       a: format(hours)[0].toString(),
                       b: format(hours)[1].toString(),
                       lable: 'Hours',
                     ),
                     //minutes
-                    CountCard(
+                    SmallCountingCard(
                       a: format(minutes)[0].toString(),
                       b: format(minutes)[1].toString(),
                       lable: 'Minutes',
@@ -73,68 +74,5 @@ class CountDownCard extends StatelessWidget {
             ],
           ),
         ));
-  }
-}
-
-class CountCard extends StatelessWidget {
-  const CountCard({
-    super.key,
-    required this.a,
-    required this.b,
-    required this.lable,
-  });
-  final String a, b, lable;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Container(
-              height: 65,
-              width: 35,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: AppColors.darkBlue2,
-              ),
-              child: Text(
-                a,
-                style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            const SizedBox(width: 5),
-            Container(
-              height: 65,
-              width: 35,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: AppColors.darkBlue2,
-              ),
-              child: Text(
-                b,
-                style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold),
-              ),
-            )
-          ],
-        ),
-        const SizedBox(height: 5),
-        Text(
-          lable,
-          style: Theme.of(context)
-              .textTheme
-              .headlineMedium!
-              .copyWith(color: Colors.white, fontSize: 15),
-        ),
-      ],
-    );
   }
 }

@@ -10,7 +10,7 @@ import '../../models/unit_model.dart';
 
 class SavedUnitsRepository extends BaseSavedUnitsRepository {
   @override
-  //!function to add a course in the saved list
+  //function to add a course in the saved list
   Future<void> saveUnit({required UnitModel unit}) async {
     final prefs = await SharedPreferences.getInstance();
     final unitsList = await loadSavedUnits();
@@ -46,7 +46,7 @@ class SavedUnitsRepository extends BaseSavedUnitsRepository {
   }
 
   @override
-  //!function to load the courses from the list
+  //function to load the courses from the list
   Future<List<UnitModel>> loadSavedUnits() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? unitsFromPrefs = prefs.getString("data");

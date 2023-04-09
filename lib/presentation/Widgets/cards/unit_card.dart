@@ -1,9 +1,9 @@
-import 'package:exam_time_table/bloc/saved_units/saved_units_bloc.dart';
-import 'package:exam_time_table/models/unit_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
+import '../../../bloc/saved_units/saved_units_bloc.dart';
+import '../../../models/unit_model.dart';
 import '/constants/colors.dart';
 
 class UnitCard extends StatelessWidget {

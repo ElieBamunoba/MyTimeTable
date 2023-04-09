@@ -1,14 +1,14 @@
-import 'package:exam_time_table/presentation/Widgets/scroll_behavior.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/saved_units/saved_units_bloc.dart';
 import '../constants/colors.dart';
-import 'Widgets/cards/carousel_cards.dart';
-import 'Widgets/cards/unit_card.dart';
-import 'widgets/empty_units_list.dart';
-import 'widgets/search_unit_button.dart';
+import './Widgets/cards/carousel_cards.dart';
+import './Widgets/cards/unit_card.dart';
+import './Widgets/scroll_behavior.dart';
+import './widgets/empty_units_list.dart';
+import './widgets/search_unit_button.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -20,15 +20,14 @@ class LandingScreen extends StatelessWidget {
         backgroundColor: AppColors.backgroundLigthGrey,
         appBar: AppBar(
           elevation: 0,
+          toolbarHeight: 80,
           centerTitle: true,
           backgroundColor: AppColors.backgroundLigthGrey,
-          title: const Text(
-            'My TimeTable',
-            style: TextStyle(
-              color: AppColors.darkBlue,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          title: const Text('My TimeTable',
+              style: TextStyle(
+                  fontSize: 30,
+                  color: AppColors.darkBlue,
+                  fontWeight: FontWeight.bold)),
           actions: [
             IconButton(
                 onPressed: () {},
@@ -44,7 +43,7 @@ class LandingScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
                 children: const [
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   Text('Welcome Friend! 😉',
                       style: TextStyle(
                           fontSize: 20,

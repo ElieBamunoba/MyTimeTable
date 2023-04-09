@@ -19,11 +19,13 @@ class CustomLoading extends StatelessWidget {
               height: 250,
             ),
           ),
-          Text('Making the magic happen! 😎',
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall!
-                  .copyWith(fontSize: 18, color: AppColors.darkBlue)),
+          Text(
+            'Making the magic happen! 😎',
+            style: Theme.of(context)
+                .textTheme
+                .headlineSmall!
+                .copyWith(fontSize: 18, color: AppColors.darkBlue),
+          ),
         ],
       ),
     );

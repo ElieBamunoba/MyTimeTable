@@ -8,7 +8,7 @@ import 'base_unit_repository.dart';
 
 class UnitRepository extends BaseUnitRepository {
   @override
-  // method to load courses as a list.
+  //method to load courses as a list.
   Future<List<UnitModel>> loadUnits(
       {required String units, String campus = "0"}) async {
     final response = await http.get(Uri.parse(
