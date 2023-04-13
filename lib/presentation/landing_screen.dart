@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/saved_units/saved_units_bloc.dart';
@@ -15,6 +16,8 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     context.read<SavedUnitsBloc>().add(LoadSavedUnits());
     return Scaffold(
         backgroundColor: AppColors.backgroundLigthGrey,
