@@ -16,8 +16,6 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     context.read<SavedUnitsBloc>().add(LoadSavedUnits());
     return Scaffold(
         backgroundColor: AppColors.backgroundLigthGrey,
