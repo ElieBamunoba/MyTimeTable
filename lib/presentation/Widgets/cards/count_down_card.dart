@@ -31,7 +31,7 @@ class CountDownCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             side: const BorderSide(color: AppColors.darkBlue)),
         child: Container(
-          height: size.height * .23,
+          height: size.height * .21,
           width: double.infinity,
           color: AppColors.darkBlue,
           child: Column(
