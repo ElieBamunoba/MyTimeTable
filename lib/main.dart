@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import './constants/theme.dart';
 import 'bloc/saved_units/saved_units_bloc.dart';
@@ -8,8 +9,19 @@ import 'repository/unit/unit_repository.dart';
 import './route.dart' as route;
 import 'bloc/unit/unit_bloc.dart';
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  // Initialize the notification plugin
+  WidgetsFlutterBinding.ensureInitialized();
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  FlutterLocalNotificationsPlugin();
+  const AndroidInitializationSettings initializationSettingsAndroid =
+  AndroidInitializationSettings('app_icon');
+  final InitializationSettings initializationSettings =
+   InitializationSettings(android: initializationSettingsAndroid);
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
+  runApp(const MyApp());
+}
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
