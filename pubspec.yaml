@@ -43,51 +43,12 @@ dependencies:
   modal_bottom_sheet: ^2.1.2
   shared_preferences: ^2.1.0
   flutter_svg: ^2.0.4
-  carousel_slider: ^4.2.1
-  flutter_native_splash: ^2.2.19
-  flutter_launcher_icons: ^0.12.0
+  flutter_native_timezone: ^2.0.0
+  flutter_local_notifications: ^13.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-flutter_icons:
-  image_path: "assets/MyTimeTabe2.png"
-  android: "launcher_icon"
-  ios: true
-  web:
-    generate: true
-    image_path: "assets/MyTimeTabe2.png"
-  windows:
-    generate: true
-    image_path: "assets/MyTimeTabe2.png"
-  macos:
-    generate: true
-    image_path: "assets/MyTimeTabe2.png"
-
-flutter_native_splash:
-  color: "#fbfbfb"
-  image: assets/MyTimeTabe.png
-  
-  # The branding property allows you to specify an image used as branding in the splash screen.
-  # It must be a png file. It is supported for Android, iOS and the Web.  For Android 12,
-  # see the Android 12 section below.
-  branding: assets/team.png
-
-  # To position the branding image at the bottom of the screen you can use bottom, bottomRight,
-  # and bottomLeft. The default values is bottom if not specified or specified something else.
-  branding_mode: bottom
-
-  # The color_dark, background_image_dark, image_dark, branding_dark are parameters that set the background
-  # and image when the device is in dark mode. If they are not specified, the app will use the
-  # parameters from above. If the image_dark parameter is specified, color_dark or
-  # background_image_dark must be specified.  color_dark and background_image_dark cannot both be
-  # set.
-  color_dark: "#FbFbFb"
-
-  adndroid_12:
-    image: assets/MyTimeTabe.png
-    icon_background_color: "#FbFbFb"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -1,17 +1,17 @@
+import 'package:exam_time_table/bloc/saved_units/saved_units_bloc.dart';
+import 'package:exam_time_table/presentation/widgets/unit_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../bloc/saved_units/saved_units_bloc.dart';
 import '../constants/colors.dart';
-import './Widgets/cards/carousel_cards.dart';
-import './Widgets/cards/unit_card.dart';
-import './Widgets/scroll_behavior.dart';
-import './widgets/empty_units_list.dart';
-import './widgets/search_unit_button.dart';
+import 'Widgets/empty_units_list.dart';
+import 'Widgets/search_unit_button.dart';
+import 'Widgets/up_coming_unit_card.dart';
 
 class LandingScreen extends StatelessWidget {
+
   const LandingScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,89 +19,79 @@ class LandingScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: AppColors.backgroundLigthGrey,
         appBar: AppBar(
-            elevation: 0,
-            toolbarHeight: 80,
-            centerTitle: true,
-            backgroundColor: AppColors.backgroundLigthGrey,
-            title: const Text('My TimeTable',
-                style: TextStyle(
-                    fontSize: 30,
-                    color: AppColors.darkBlue,
-                    fontWeight: FontWeight.bold)),
-            actions: [
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.notification_important_outlined,
-                      color: AppColors.darkBlue))
-            ]),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Column(children: const [
-                SizedBox(height: 10),
-                Text('Welcome Friend! 😉',
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textColor)),
-                SizedBox(height: 10),
-                SearchUnitButton(),
-                SizedBox(height: 20)
-              ]),
-            ),
-            BlocBuilder<SavedUnitsBloc, SavedUnitsState>(
-              builder: (context, state) {
-                if (state is SavedUnitsLoading) {
-                  return const Center(child: CupertinoActivityIndicator());
-                } else if (state is SavedUnitsLoaded) {
-                  return Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+          title: const Text('My TimeTable'),
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.notification_important_outlined))
+          ],
+        ),
+        body: Container(
+          height: MediaQuery.of(context).size.height - 70,
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                children: const [
+                  Text('Welcome Friend! 😉',
+                      style:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                  SizedBox(height: 10),
+                  SearchUnitButton(),
+                ],
+              ),
+              const SizedBox(height: 20),
+              BlocBuilder<SavedUnitsBloc, SavedUnitsState>(
+                builder: (context, state) {
+                  if (state is SavedUnitsLoading) {
+                    return const Center(
+                      child: CupertinoActivityIndicator(),
+                    );
+                  } else if (state is SavedUnitsLoaded) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.max,
                       children: [
                         state.savedUnitsList.isNotEmpty
-                            ? UnitCardCarouselSlider(
-                                unit: state.savedUnitsList[0])
+                            ? UpcomingUnitCard(unit: state.savedUnitsList[0])
                             : const EmptyUnitsList(),
-                        const SizedBox(height: 10),
                         if (state.savedUnitsList.isNotEmpty)
-                          Expanded(
-                            child: ScrollConfiguration(
-                              behavior: MyBehavior(),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height -
+                                MediaQuery.of(context).size.height * 0.55,
+                            child: RefreshIndicator(
+                              onRefresh: () async {
+                                context
+                                    .read<SavedUnitsBloc>()
+                                    .add(LoadSavedUnits());
+                              },
                               child: ListView.builder(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 5),
-                                itemCount: state.savedUnitsList.length,
-                                itemBuilder: (context, index) => Visibility(
-                                  visible: index != 0,
-                                  child: UnitCard(
-                                    key: ValueKey(
-                                        state.savedUnitsList[index].courseCode),
-                                    unit: state.savedUnitsList[index],
-                                    isSaved: true,
-                                  ),
-                                ),
-                              ),
+                                  itemCount: state.savedUnitsList.length,
+                                  itemBuilder: (context, index) {
+                                    return index == 0
+                                        ? const SizedBox()
+                                        : SavedUnitCard(
+                                        unit: state.savedUnitsList[index]);
+                                  }),
                             ),
                           ),
                       ],
-                    ),
-                  );
-                } else if (state is SavedUnitsLoadingError) {
-                  if (state.errorMessage.contains('Data not found')) {
-                    return const EmptyUnitsList();
+                    );
+                  } else if (state is SavedUnitsLoadingError) {
+                    if (state.errorMessage.contains('Data not found')) {
+                      return const EmptyUnitsList();
+                    } else {
+                      return Center(child: Text(state.errorMessage));
+                    }
                   } else {
-                    return Center(child: Text(state.errorMessage));
+                    return const Center(child: Text('Something Wrong happen'));
                   }
-                } else {
-                  return const Center(child: Text('Something Wrong happened'));
-                }
-              },
-            ),
-            const SizedBox(height: 10)
-          ],
+                },
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
         ));
   }
 }
