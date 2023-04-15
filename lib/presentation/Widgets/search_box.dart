@@ -1,11 +1,11 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:exam_time_table/bloc/unit/unit_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../constants/colors.dart';
+import '/bloc/unit/unit_bloc.dart';
 
 class SearchBox extends StatelessWidget {
   SearchBox({super.key});
@@ -25,6 +25,7 @@ class SearchBox extends StatelessWidget {
                 .add(LoadUnits(courses: value.toUpperCase())),
             decoration: InputDecoration(
               hintText: "Search for your units (acs113, bil111A, ...)",
+              hintStyle: TextStyle(fontSize: 15),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(color: AppColors.darkBlue)),
@@ -39,9 +40,8 @@ class SearchBox extends StatelessWidget {
         Container(
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
-              color: AppColors.darkBlue,
-              borderRadius: BorderRadius.circular(10),
-            ),
+                color: AppColors.darkBlue,
+                borderRadius: BorderRadius.circular(10)),
             child: IconButton(
               onPressed: () {
                 unitsController.value.text.toString().isNotEmpty
@@ -53,11 +53,7 @@ class SearchBox extends StatelessWidget {
                         msg: "Kindly add an unit in the search box");
                 FocusManager.instance.primaryFocus?.unfocus();
               },
-              icon: const Icon(
-                Icons.search,
-                color: Colors.white,
-                size: 30,
-              ),
+              icon: const Icon(Icons.search, color: Colors.white, size: 30),
             ))
       ],
     );

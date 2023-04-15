@@ -18,7 +18,7 @@ class UnitBloc extends Bloc<UnitEvent, UnitState> {
     emit(UnitLoading());
     try {
       final List<UnitModel> units = await _unitRepository.loadUnits(
-          units: event.courses, campus: event.campus);
+          units: event.courses, campusId: event.campusId);
       emit(UnitLoaded(unitsList: units));
     } catch (error) {
       emit(UnitLoadLoadingError(errorMessage: '$error'));

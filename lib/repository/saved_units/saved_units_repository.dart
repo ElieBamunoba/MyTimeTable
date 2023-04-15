@@ -1,16 +1,15 @@
 import 'dart:convert';
+
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../saved_units/base_saved_units_repository.dart';
-
 import '../../models/unit_model.dart';
+import '../saved_units/base_saved_units_repository.dart';
 
 class SavedUnitsRepository extends BaseSavedUnitsRepository {
   @override
-  //!function to add a course in the saved list
+  //function to add a course in the saved list
   Future<void> saveUnit({required UnitModel unit}) async {
     final prefs = await SharedPreferences.getInstance();
     final unitsList = await loadSavedUnits();
@@ -21,7 +20,7 @@ class SavedUnitsRepository extends BaseSavedUnitsRepository {
       final jsonData =
           jsonEncode(unitsList.map((unit) => unit.toJson()).toList());
       prefs.setString("data", jsonData);
-      Fluttertoast.showToast(msg: '${unit.courseCode} has been saved');
+      Fluttertoast.showToast(msg: '${unit.courseCode} has been added');
     } else {
       Fluttertoast.showToast(msg: '${unit.courseCode} already exist');
     }
@@ -36,11 +35,11 @@ class SavedUnitsRepository extends BaseSavedUnitsRepository {
     final jsonData =
         jsonEncode(unitsList.map((unit) => unit.toJson()).toList());
     prefs.setString("data", jsonData);
-    Fluttertoast.showToast(msg: '${unit.courseCode} has been deleted');
+    Fluttertoast.showToast(msg: '${unit.courseCode} has been removed');
   }
 
   @override
-  //!function to load the courses from the list
+  //function to load the courses from the list
   Future<List<UnitModel>> loadSavedUnits() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? unitsFromPrefs = prefs.getString("data");

@@ -8,9 +8,9 @@ abstract class UnitEvent extends Equatable {
 
 class LoadUnits extends UnitEvent {
   final String courses;
-  final String campus;
+  final String campusId;
 
-  const LoadUnits({required this.courses, this.campus = '0'});
+  const LoadUnits({required this.courses, this.campusId = '0'});
   @override
-  List<Object> get props => [courses, campus];
+  List<Object> get props => [courses, campusId];
 }

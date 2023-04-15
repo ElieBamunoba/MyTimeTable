@@ -16,10 +16,6 @@ class UnitModel {
     time = json['time'];
     venue = json['room'];
   }
-  Map<String, dynamic> toJson() => {
-        'course_code': courseCode,
-        'day': date,
-        'time': time,
-        'room': venue,
-      };
+  Map<String, dynamic> toJson() =>
+      {'course_code': courseCode, 'day': date, 'time': time, 'room': venue};
 }
