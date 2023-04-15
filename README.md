@@ -43,7 +43,7 @@ If you would like to contribute to this project, please follow these steps:
 
 ## Credits
 
-This app was created by Elie Bamunoba, John Muinde and Kevin Sang for a Flutter project at Daystar University.
+This app was created by Elie Bamunoba, John Muinde and Kevin Sang at Daystar University.
 
 ## License
 
