@@ -1,11 +1,11 @@
-
-import 'package:exam_time_table/presentation/Widgets/search_box.dart';
-import 'package:exam_time_table/presentation/widgets/unit_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../bloc/unit/unit_bloc.dart';
+import './search_box.dart';
+import '/constants/colors.dart';
+import 'cards/unit_card.dart';
 import 'custom_loading.dart';
 
 class ModalBottomSheet extends StatelessWidget {
@@ -21,7 +21,7 @@ class ModalBottomSheet extends StatelessWidget {
           SearchBox(),
           const SizedBox(height: 20),
           SizedBox(
-            height: MediaQuery.of(context).size.height * .42,
+            height: MediaQuery.of(context).size.height * .40,
             child: Center(
               child: BlocBuilder<UnitBloc, UnitState>(
                 builder: (context, state) {
@@ -29,6 +29,31 @@ class ModalBottomSheet extends StatelessWidget {
                     return Builder(builder: (context) {
                       return const CustomLoading();
                     });
+                  } else if (state is UnitInitial) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 30),
+                      child: Center(
+                        child: Container(
+                          height: 90,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: AppColors.orange2,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            'Please enter your course codes separated by commas to receive a simplified timetable of your exams.',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .copyWith(
+                                    color: AppColors.textColor2, fontSize: 15),
+                          ),
+                        ),
+                      ),
+                    );
                   } else if (state is UnitLoaded) {
                     return state.unitsList.isEmpty
                         ? Column(
@@ -40,7 +65,7 @@ class ModalBottomSheet extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               const Text(
-                                'We couldn\'t find what you searcged for.\nTry searching again.\n',
+                                'We couldn\'t find what you searched for.\nTry searching again.\n',
                                 textAlign: TextAlign.center,
                               ),
                               const SizedBox(height: 10),
@@ -53,21 +78,6 @@ class ModalBottomSheet extends StatelessWidget {
                             itemBuilder: (context, index) =>
                                 UnitCard(unit: state.unitsList[index]),
                           );
-                  } else if (state is UnitInitial) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 30),
-                      child: Center(
-                        child: Text(
-                          'Enter your unit code to get a simplified timetable of your exams',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineSmall!
-                              .copyWith(color: Colors.black, fontSize: 15),
-                        ),
-                      ),
-                    );
                   } else if (state is UnitLoadLoadingError) {
                     if (state.errorMessage.split(':').first ==
                         'Failed host lookup') {
@@ -87,22 +97,16 @@ class ModalBottomSheet extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(height: 10),
-                                Icon(
-                                  Icons.wifi_off,
-                                  size: 60,
-                                  color: Colors.grey,
-                                )
+                                Icon(Icons.wifi_off,
+                                    size: 60, color: Colors.grey)
                               ]),
                         ),
                       );
                     }
                     return Center(
-                      child: Text(state.errorMessage.split(':').first),
-                    );
+                        child: Text(state.errorMessage.split(':').first));
                   } else {
-                    return const Center(
-                      child: Text('Something went wrong'),
-                    );
+                    return const Center(child: Text('Something went wrong'));
                   }
                 },
               ),
