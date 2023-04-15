@@ -25,8 +25,8 @@ class _UnitCardCarouselSliderState extends State<UnitCardCarouselSlider> {
   void startTimer(UnitModel unit) {
     final date = unit.date;
     final time = unit.time;
-    DateTime startTime = DateFormat('dd/MM/yy hh:mma')
-        .parse('${date!.split(" ")[1]} ${time!.split('-')[0]}');
+    DateTime startTime = DateFormat('dd/MM/yy hh:mma').parse(
+        '${date!.split(" ")[1]} ${(time!.replaceAll('.', ':')).split('-')[0]}');
     // Calculate the difference between the start time and the current time
     Duration difference = startTime.difference(DateTime.now());
 

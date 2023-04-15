@@ -10,9 +10,9 @@ class UnitRepository extends BaseUnitRepository {
   @override
   //method to load courses as a list.
   Future<List<UnitModel>> loadUnits(
-      {required String units, String campus = "0"}) async {
+      {required String units, required String campusId}) async {
     final response = await http.get(Uri.parse(
-        "https://timetable.kimworks.buzz/api/courses?courses=$units&campus_choice=$campus"));
+        "https://timetable.kimworks.buzz/api/courses?courses=$units&campus_choice=$campusId"));
     List<UnitModel> unitsList = List.empty();
     if (response.statusCode == 200) {
       final jsonData = jsonDecode(response.body)['data'] as List;

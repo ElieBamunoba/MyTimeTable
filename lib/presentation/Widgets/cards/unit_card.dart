@@ -7,11 +7,7 @@ import '../../../models/unit_model.dart';
 import '/constants/colors.dart';
 
 class UnitCard extends StatelessWidget {
-  const UnitCard({
-    super.key,
-    required this.unit,
-    this.isSaved = false,
-  });
+  const UnitCard({super.key, required this.unit, this.isSaved = false});
   final bool isSaved;
   final UnitModel unit;
 

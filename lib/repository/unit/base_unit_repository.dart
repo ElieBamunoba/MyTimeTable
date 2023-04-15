@@ -4,5 +4,5 @@ import '/models/unit_model.dart';
 
 abstract class BaseUnitRepository {
   Future<List<UnitModel>?> loadUnits(
-      {required String units, String campus = "0"}) async {}
+      {required String units, required String campusId}) async {}
 }

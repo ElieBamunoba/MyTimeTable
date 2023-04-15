@@ -40,9 +40,8 @@ class SearchBox extends StatelessWidget {
         Container(
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
-              color: AppColors.darkBlue,
-              borderRadius: BorderRadius.circular(10),
-            ),
+                color: AppColors.darkBlue,
+                borderRadius: BorderRadius.circular(10)),
             child: IconButton(
               onPressed: () {
                 unitsController.value.text.toString().isNotEmpty
@@ -54,11 +53,7 @@ class SearchBox extends StatelessWidget {
                         msg: "Kindly add an unit in the search box");
                 FocusManager.instance.primaryFocus?.unfocus();
               },
-              icon: const Icon(
-                Icons.search,
-                color: Colors.white,
-                size: 30,
-              ),
+              icon: const Icon(Icons.search, color: Colors.white, size: 30),
             ))
       ],
     );

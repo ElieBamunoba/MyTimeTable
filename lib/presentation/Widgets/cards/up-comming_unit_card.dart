@@ -9,10 +9,7 @@ import '/constants/colors.dart';
 import '/presentation/Widgets/scroll_behavior.dart';
 
 class UpcomingUnitCard extends StatelessWidget {
-  const UpcomingUnitCard({
-    Key? key,
-    required this.unit,
-  }) : super(key: key);
+  const UpcomingUnitCard({Key? key, required this.unit}) : super(key: key);
   final UnitModel unit;
 
   @override

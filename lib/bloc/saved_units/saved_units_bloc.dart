@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:exam_time_table/repository/saved_units/saved_units_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../models/unit_model.dart';
+import '/repository/saved_units/saved_units_repository.dart';
 
 part 'saved_units_event.dart';
 part 'saved_units_state.dart';

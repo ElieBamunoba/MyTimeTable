@@ -31,48 +31,42 @@ class CountDownCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             side: const BorderSide(color: AppColors.darkBlue)),
         child: Container(
-          height: size.height * .21,
-          width: double.infinity,
-          color: AppColors.darkBlue,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                'Are you ready for exam ?',
-                style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    //day
-                    SmallCountingCard(
-                      a: format(days)[0].toString(),
-                      b: format(days)[1].toString(),
-                      lable: 'Days',
-                    ),
-                    //hours
-                    SmallCountingCard(
-                      a: format(hours)[0].toString(),
-                      b: format(hours)[1].toString(),
-                      lable: 'Hours',
-                    ),
-                    //minutes
-                    SmallCountingCard(
-                      a: format(minutes)[0].toString(),
-                      b: format(minutes)[1].toString(),
-                      lable: 'Minutes',
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox()
-            ],
-          ),
-        ));
+            height: size.height * .21,
+            width: double.infinity,
+            color: AppColors.darkBlue,
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text('Are you ready for exam ?',
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayMedium!
+                          .copyWith(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold)),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            //day
+                            SmallCountingCard(
+                                a: format(days)[0].toString(),
+                                b: format(days)[1].toString(),
+                                lable: 'Days'),
+                            //hours
+                            SmallCountingCard(
+                                a: format(hours)[0].toString(),
+                                b: format(hours)[1].toString(),
+                                lable: 'Hours'),
+                            //minutes
+                            SmallCountingCard(
+                                a: format(minutes)[0].toString(),
+                                b: format(minutes)[1].toString(),
+                                lable: 'Minutes')
+                          ])),
+                  const SizedBox()
+                ])));
   }
 }

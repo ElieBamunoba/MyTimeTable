@@ -6,13 +6,12 @@ abstract class UnitState extends Equatable {
   List<Object> get props => [];
 }
 
-class UnitLoading extends UnitState {}
-
 class UnitInitial extends UnitState {}
+
+class UnitLoading extends UnitState {}
 
 class UnitLoaded extends UnitState {
   final List<UnitModel> unitsList;
-
   const UnitLoaded({required this.unitsList});
   @override
   List<Object> get props => [unitsList];
@@ -20,7 +19,6 @@ class UnitLoaded extends UnitState {
 
 class UnitLoadLoadingError extends UnitState {
   final String errorMessage;
-
   const UnitLoadLoadingError({required this.errorMessage});
   @override
   List<Object> get props => [errorMessage];

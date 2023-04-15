@@ -29,30 +29,6 @@ class ModalBottomSheet extends StatelessWidget {
                     return Builder(builder: (context) {
                       return const CustomLoading();
                     });
-                  } else if (state is UnitLoaded) {
-                    return state.unitsList.isEmpty
-                        ? Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                'No results found',
-                                style: Theme.of(context).textTheme.displaySmall,
-                              ),
-                              const SizedBox(height: 10),
-                              const Text(
-                                'We couldn\'t find what you searched for.\nTry searching again.\n',
-                                textAlign: TextAlign.center,
-                              ),
-                              const SizedBox(height: 10),
-                              SvgPicture.asset("assets/nodata.svg",
-                                  height: 130),
-                            ],
-                          )
-                        : ListView.builder(
-                            itemCount: state.unitsList.length,
-                            itemBuilder: (context, index) =>
-                                UnitCard(unit: state.unitsList[index]),
-                          );
                   } else if (state is UnitInitial) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
@@ -78,6 +54,30 @@ class ModalBottomSheet extends StatelessWidget {
                         ),
                       ),
                     );
+                  } else if (state is UnitLoaded) {
+                    return state.unitsList.isEmpty
+                        ? Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'No results found',
+                                style: Theme.of(context).textTheme.displaySmall,
+                              ),
+                              const SizedBox(height: 10),
+                              const Text(
+                                'We couldn\'t find what you searched for.\nTry searching again.\n',
+                                textAlign: TextAlign.center,
+                              ),
+                              const SizedBox(height: 10),
+                              SvgPicture.asset("assets/nodata.svg",
+                                  height: 130),
+                            ],
+                          )
+                        : ListView.builder(
+                            itemCount: state.unitsList.length,
+                            itemBuilder: (context, index) =>
+                                UnitCard(unit: state.unitsList[index]),
+                          );
                   } else if (state is UnitLoadLoadingError) {
                     if (state.errorMessage.split(':').first ==
                         'Failed host lookup') {
@@ -97,22 +97,16 @@ class ModalBottomSheet extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(height: 10),
-                                Icon(
-                                  Icons.wifi_off,
-                                  size: 60,
-                                  color: Colors.grey,
-                                )
+                                Icon(Icons.wifi_off,
+                                    size: 60, color: Colors.grey)
                               ]),
                         ),
                       );
                     }
                     return Center(
-                      child: Text(state.errorMessage.split(':').first),
-                    );
+                        child: Text(state.errorMessage.split(':').first));
                   } else {
-                    return const Center(
-                      child: Text('Something went wrong'),
-                    );
+                    return const Center(child: Text('Something went wrong'));
                   }
                 },
               ),

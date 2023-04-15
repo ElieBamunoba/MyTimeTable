@@ -9,7 +9,6 @@ abstract class SavedUnitsEvent extends Equatable {
 
 class SaveUnit extends SavedUnitsEvent {
   final UnitModel unit;
-
   const SaveUnit({required this.unit});
 }
 

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/saved_units/saved_units_bloc.dart';
@@ -20,48 +19,43 @@ class LandingScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: AppColors.backgroundLigthGrey,
         appBar: AppBar(
-          elevation: 0,
-          toolbarHeight: 80,
-          centerTitle: true,
-          backgroundColor: AppColors.backgroundLigthGrey,
-          title: const Text('My TimeTable',
-              style: TextStyle(
-                  fontSize: 30,
-                  color: AppColors.darkBlue,
-                  fontWeight: FontWeight.bold)),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.notification_important_outlined,
-                    color: AppColors.darkBlue))
-          ],
-        ),
+            elevation: 0,
+            toolbarHeight: 80,
+            centerTitle: true,
+            backgroundColor: AppColors.backgroundLigthGrey,
+            title: const Text('My TimeTable',
+                style: TextStyle(
+                    fontSize: 30,
+                    color: AppColors.darkBlue,
+                    fontWeight: FontWeight.bold)),
+            actions: [
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.notification_important_outlined,
+                      color: AppColors.darkBlue))
+            ]),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Column(
-                children: const [
-                  SizedBox(height: 10),
-                  Text('Welcome Friend! 😉',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.textColor)),
-                  SizedBox(height: 10),
-                  SearchUnitButton(),
-                  SizedBox(height: 20),
-                ],
-              ),
+              child: Column(children: const [
+                SizedBox(height: 10),
+                Text('Welcome Friend! 😉',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.textColor)),
+                SizedBox(height: 10),
+                SearchUnitButton(),
+                SizedBox(height: 20)
+              ]),
             ),
             BlocBuilder<SavedUnitsBloc, SavedUnitsState>(
               builder: (context, state) {
                 if (state is SavedUnitsLoading) {
-                  return const Center(
-                    child: CupertinoActivityIndicator(),
-                  );
+                  return const Center(child: CupertinoActivityIndicator());
                 } else if (state is SavedUnitsLoaded) {
                   return Expanded(
                     child: Column(
@@ -102,11 +96,11 @@ class LandingScreen extends StatelessWidget {
                     return Center(child: Text(state.errorMessage));
                   }
                 } else {
-                  return const Center(child: Text('Something Wrong happen'));
+                  return const Center(child: Text('Something Wrong happened'));
                 }
               },
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 10)
           ],
         ));
   }

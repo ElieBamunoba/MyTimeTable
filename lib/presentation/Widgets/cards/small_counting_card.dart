@@ -3,12 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../constants/colors.dart';
 
 class SmallCountingCard extends StatelessWidget {
-  const SmallCountingCard({
-    super.key,
-    required this.a,
-    required this.b,
-    required this.lable,
-  });
+  const SmallCountingCard(
+      {super.key, required this.a, required this.b, required this.lable});
   final String a, b, lable;
 
   @override
