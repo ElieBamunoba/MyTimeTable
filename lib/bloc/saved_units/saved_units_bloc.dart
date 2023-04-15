@@ -61,6 +61,7 @@ class SavedUnitsBloc extends Bloc<SavedUnitsEvent, SavedUnitsState> {
   void _scheduleNotifications(List<UnitModel> unitsList) {
     final now = DateTime.now();
     unitsList.forEach((unit) {
+      //
      // final examDateTime = DateTime.parse(unit.date);
       final examDateTime = DateTime(2020);
       final threeHoursBefore = examDateTime.subtract(Duration(hours: 3));
