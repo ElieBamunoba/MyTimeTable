@@ -55,7 +55,17 @@ class LandingScreen extends StatelessWidget {
             BlocBuilder<SavedUnitsBloc, SavedUnitsState>(
               builder: (context, state) {
                 if (state is SavedUnitsLoading) {
-                  return const Center(child: CupertinoActivityIndicator());
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CupertinoActivityIndicator(),
+                      SizedBox(height: 20),
+                      Text(
+                        'Updating to the latest Time Table',
+                        style: TextStyle(fontSize: 16),
+                      )
+                    ],
+                  );
                 } else if (state is SavedUnitsLoaded) {
                   return Expanded(
                     child: Column(
@@ -70,17 +80,24 @@ class LandingScreen extends StatelessWidget {
                           Expanded(
                             child: ScrollConfiguration(
                               behavior: MyBehavior(),
-                              child: ListView.builder(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 5),
-                                itemCount: state.savedUnitsList.length,
-                                itemBuilder: (context, index) => Visibility(
-                                  visible: index != 0,
-                                  child: UnitCard(
-                                    key: ValueKey(
-                                        state.savedUnitsList[index].courseCode),
-                                    unit: state.savedUnitsList[index],
-                                    isSaved: true,
+                              child: RefreshIndicator(
+                                onRefresh: () async {
+                                  context.read<SavedUnitsBloc>().add(
+                                      UpdateSavedUnits(
+                                          savedUnits: state.savedUnitsList));
+                                },
+                                child: ListView.builder(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 5),
+                                  itemCount: state.savedUnitsList.length,
+                                  itemBuilder: (context, index) => Visibility(
+                                    visible: index != 0,
+                                    child: UnitCard(
+                                      key: ValueKey(state
+                                          .savedUnitsList[index].courseCode),
+                                      unit: state.savedUnitsList[index],
+                                      isSaved: true,
+                                    ),
                                   ),
                                 ),
                               ),

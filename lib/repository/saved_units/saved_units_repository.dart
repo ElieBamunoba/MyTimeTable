@@ -24,11 +24,28 @@ class SavedUnitsRepository extends BaseSavedUnitsRepository {
     } else {
       Fluttertoast.showToast(msg: '${unit.courseCode} already exist');
     }
+  } //function to update a course in the saved list
+
+  Future<void> updateUnit({required UnitModel unit}) async {
+    final prefs = await SharedPreferences.getInstance();
+    final unitsList = await loadSavedUnits();
+
+    //check if the course has been already saved
+    if (unitsList.any((element) => element.courseCode == unit.courseCode)) {
+      //update the unit by the new unit fetched
+      unitsList[unitsList.indexWhere(
+          (element) => element.courseCode == unit.courseCode)] = unit;
+      final jsonData =
+          jsonEncode(unitsList.map((unit) => unit.toJson()).toList());
+      prefs.setString("data", jsonData);
+    } else {
+      Fluttertoast.showToast(msg: 'we couldn\'n update ${unit.courseCode}');
+    }
   }
 
   @override
   //function to delete a course from the list
-  Future<void> unitDelete({required UnitModel unit}) async {
+  Future<void> deleteUnit({required UnitModel unit}) async {
     final prefs = await SharedPreferences.getInstance();
     final unitsList = await loadSavedUnits();
     unitsList.removeWhere((element) => element.courseCode == unit.courseCode);
@@ -57,7 +74,6 @@ class SavedUnitsRepository extends BaseSavedUnitsRepository {
         if (dateComparison != 0) {
           return dateComparison;
         }
-
         // If dates are the same, parse time strings into DateTime objects
         DateTime aTime = DateFormat('hh:mma')
             .parse((a['time'].toString().replaceAll('.', ':')).split('-')[0]);

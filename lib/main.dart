@@ -32,8 +32,10 @@ class MyApp extends StatelessWidget {
           BlocProvider<UnitBloc>(
               create: (context) => UnitBloc(unitRepository: UnitRepository())),
           BlocProvider<SavedUnitsBloc>(
-              create: (context) =>
-                  SavedUnitsBloc(savedUnitsRepository: SavedUnitsRepository())),
+              create: (context) => SavedUnitsBloc(
+                    savedUnitsRepository: SavedUnitsRepository(),
+                    unitRepository: UnitRepository(),
+                  )),
         ],
         child: MaterialApp(
             title: 'MyTimeTable',
