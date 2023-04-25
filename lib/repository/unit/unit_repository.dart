@@ -9,7 +9,7 @@ import 'base_unit_repository.dart';
 class UnitRepository extends BaseUnitRepository {
   @override
   //method to load courses as a list.
-  Future<List<UnitModel>> loadUnits(
+  Future<List<UnitModel>> fetchUnits(
       {required String units, required String campusId}) async {
     final response = await http.get(Uri.parse(
         "https://timetable.kimworks.buzz/api/courses?courses=$units&campus_choice=$campusId"));

@@ -3,6 +3,6 @@
 import '/models/unit_model.dart';
 
 abstract class BaseUnitRepository {
-  Future<List<UnitModel>?> loadUnits(
+  Future<List<UnitModel>?> fetchUnits(
       {required String units, required String campusId}) async {}
 }
