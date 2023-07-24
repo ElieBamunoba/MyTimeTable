@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../bloc/saved_units/saved_units_bloc.dart';
 import '../constants/colors.dart';
@@ -30,7 +31,7 @@ class LandingScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold)),
             actions: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () => Fluttertoast.showToast(msg: 'Coming Soon!'),
                   icon: const Icon(Icons.notification_important_outlined,
                       color: AppColors.darkBlue))
             ]),
