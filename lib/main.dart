@@ -2,23 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import './constants/theme.dart';
-import 'bloc/saved_units/saved_units_bloc.dart';
-import 'notification/notification_service.dart';
+
+import 'business_logic/logic.dart';
 import 'repository/saved_units/saved_units_repository.dart';
 import 'repository/unit/unit_repository.dart';
-import './route.dart' as route;
-import 'bloc/unit/unit_bloc.dart';
+import 'constants/route.dart' as route;
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  NotificationService().initNotification();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
