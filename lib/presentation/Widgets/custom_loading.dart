@@ -21,7 +21,7 @@ class CustomLoading extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall!
-                    .copyWith(fontSize: 18, color: AppColors.darkBlue))
+                    .copyWith(fontSize: 22, color: AppColors.darkBlue))
           ],
         ));
   }
