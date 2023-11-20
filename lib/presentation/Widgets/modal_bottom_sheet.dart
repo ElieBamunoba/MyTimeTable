@@ -115,7 +115,28 @@ class ModalBottomSheet extends StatelessWidget {
                             );
                           }
                           return Center(
-                              child: Text(state.errorMessage.split(':').first));
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.error_outline,
+                                  size: 60, color: Colors.red),
+                              const SizedBox(height: 10),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * .6,
+                                child: Text(
+                                  state.errorMessage,
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall!
+                                      .copyWith(
+                                          color: AppColors.textColor,
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 20),
+                                ),
+                              )
+                            ],
+                          ));
                         } else {
                           return const Center(
                               child: Text('Something went wrong'));

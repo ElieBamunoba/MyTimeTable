@@ -21,7 +21,9 @@ class UnitBloc extends Bloc<UnitEvent, UnitState> {
           units: event.courses, campusId: event.campusId);
       emit(UnitLoaded(unitsList: units));
     } catch (error) {
-      emit(UnitLoadLoadingError(errorMessage: '$error'));
+      //only take the message and not the exception from the server.
+      final errorMessage = error.toString().split(':')[1];
+      emit(UnitLoadLoadingError(errorMessage: errorMessage));
     }
   }
 }

@@ -19,9 +19,9 @@ class UnitRepository extends BaseUnitRepository {
       unitsList = jsonData.map((unit) => UnitModel.fromJson(unit)).toList();
       return unitsList;
     } else if (response.statusCode == 404) {
-      throw Exception('Not Subcategory found');
+      throw Exception('Failed to load units');
     } else {
-      throw Exception('Failed to load subcategories');
+      throw Exception('Failed to load units');
     }
   }
 }
