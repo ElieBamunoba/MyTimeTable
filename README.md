@@ -9,6 +9,11 @@ This mobile app provides an easy way for Daystar University students to access t
 - A countdown timer for the remaining time before the next upcoming exam.
 - User-friendly interface to ensure ease of use for all students.
 
+## Feature Graphic
+
+![6FUGO2XpvmVK_1024_500](https://github.com/ElieBamunoba/MyTimeTable/assets/78250384/a82579de-cbfc-40d6-a3dd-160a069e2127)
+
+
 ## Screenshots
 
 ![1](https://user-images.githubusercontent.com/78250384/232242380-07aab840-09fe-4940-83d9-9dc178104481.png)
