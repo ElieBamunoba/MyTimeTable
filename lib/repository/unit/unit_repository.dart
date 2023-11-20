@@ -12,7 +12,7 @@ class UnitRepository extends BaseUnitRepository {
   Future<List<UnitModel>> fetchUnits(
       {required String units, required String campusId}) async {
     final response = await http.get(Uri.parse(
-        "https://timetable.kimworks.buzz/api/courses?courses=$units&campus_choice=$campusId"));
+        "https://exam.dita.co.ke/api/courses?courses=$units&campus_choice=$campusId"));
     List<UnitModel> unitsList = List.empty();
     if (response.statusCode == 200) {
       final jsonData = jsonDecode(response.body)['data'] as List;
