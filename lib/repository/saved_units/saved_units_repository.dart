@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../models/unit_model.dart';
+import '../models/unit_model.dart';
 import '../saved_units/base_saved_units_repository.dart';
 
 class SavedUnitsRepository extends BaseSavedUnitsRepository {

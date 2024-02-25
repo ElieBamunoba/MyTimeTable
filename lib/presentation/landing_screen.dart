@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../business_logic/logic.dart';
-import '../constants/colors.dart';
+import '../utils/colors.dart';
 import './Widgets/cards/carousel_cards.dart';
 import './Widgets/cards/unit_card.dart';
 import './Widgets/scroll_behavior.dart';
@@ -82,6 +82,7 @@ class LandingScreen extends StatelessWidget {
                             child: ScrollConfiguration(
                               behavior: MyBehavior(),
                               child: RefreshIndicator(
+                                color: AppColors.darkBlue,
                                 onRefresh: () async {
                                   context.read<SavedUnitsBloc>().add(
                                       UpdateSavedUnits(

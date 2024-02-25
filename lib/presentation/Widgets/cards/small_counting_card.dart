@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/colors.dart';
+import '../../../utils/colors.dart';
 
 class SmallCountingCard extends StatelessWidget {
   const SmallCountingCard(

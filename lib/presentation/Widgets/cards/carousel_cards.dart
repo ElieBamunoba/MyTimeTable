@@ -4,7 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../../models/unit_model.dart';
+import '../../../repository/models/unit_model.dart';
 import './count_down_card.dart';
 import './up-comming_unit_card.dart';
 

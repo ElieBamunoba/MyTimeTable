@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../business_logic/logic.dart';
-import '../../../models/unit_model.dart';
-import '/constants/colors.dart';
+import '../../../repository/models/unit_model.dart';
+import '/utils/colors.dart';
 import '/presentation/Widgets/scroll_behavior.dart';
 
 class UpcomingUnitCard extends StatelessWidget {

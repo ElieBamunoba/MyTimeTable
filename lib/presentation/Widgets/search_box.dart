@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../business_logic/logic.dart';
-import '../../constants/colors.dart';
+import '../../utils/colors.dart';
 
 class SearchBox extends StatelessWidget {
   SearchBox({super.key});

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../business_logic/logic.dart';
-import '../../../models/unit_model.dart';
-import '/constants/colors.dart';
+import '../../../repository/models/unit_model.dart';
+import '/utils/colors.dart';
 
 class UnitCard extends StatelessWidget {
   const UnitCard({super.key, required this.unit, this.isSaved = false});

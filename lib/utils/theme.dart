@@ -7,6 +7,7 @@ ThemeData themeData() {
       fontFamily: 'Montserrat',
       primarySwatch: myColor,
       scaffoldBackgroundColor: Colors.white,
+      primaryColor: AppColors.darkBlue,
       textTheme: const TextTheme(
           displaySmall: TextStyle(
               color: AppColors.darkBlue,

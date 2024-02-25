@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import './constants/theme.dart';
+import './utils/theme.dart';
 
 import 'business_logic/logic.dart';
 import 'repository/saved_units/saved_units_repository.dart';
 import 'repository/unit/unit_repository.dart';
-import 'constants/route.dart' as route;
+import 'utils/route.dart' as route;
 
 void main() => runApp(const MyApp());
 

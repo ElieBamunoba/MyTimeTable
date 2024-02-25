@@ -12,6 +12,7 @@ class SearchUnitButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).primaryColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),
               fixedSize: const Size(double.infinity, 60)),
