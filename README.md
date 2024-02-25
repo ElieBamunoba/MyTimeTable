@@ -52,7 +52,7 @@ This app was created by Elie Bamunoba, John Muinde and Kevin Sang at Daystar Uni
 
 ## License
 
-This project is licensed under the DITA License (LICENSE).
+This project is licensed under the DITA License: (LICENSE).
 
 
 
